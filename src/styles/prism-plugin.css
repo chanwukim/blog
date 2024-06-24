@@ -1,0 +1,12 @@
+.code-toolbar > .toolbar {
+  opacity: 1 !important; /* 항상 보이도록 opacity 변경 */
+}
+
+.code-toolbar .toolbar .toolbar-item {
+  cursor: pointer;
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  display: inline-block;
+  margin-right: 4px;
+}
