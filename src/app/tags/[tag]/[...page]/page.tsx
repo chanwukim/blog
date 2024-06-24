@@ -1,8 +1,41 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PostCard, Pagination, Tags } from "@/components";
 import { SITE_CONFIG } from "@/constants";
 import { getAllPosts, getAllTags } from "@/libs";
+
+export async function generateStaticParams() {
+  const allTags = getAllTags();
+  const allPosts = getAllPosts();
+
+  const params: { tag: string; page: string[] }[] = [];
+
+  allTags.forEach((tag) => {
+    const postsByTag = allPosts.filter((post) =>
+      post.frontMatter.tags.includes(tag),
+    );
+
+    const totalPages = Math.ceil(postsByTag.length / SITE_CONFIG.limitPerPage);
+
+    for (let page = 1; page <= totalPages; page++) {
+      params.push({ tag: encodeURIComponent(tag), page: [`${page}`] });
+    }
+  });
+
+  return params;
+}
+
+export async function generateMetadata({
+  params,
+}: TagsPaginationProps): Promise<Metadata> {
+  const { tag } = params;
+
+  return {
+    title: `태그 ${tag} 붙은 글`,
+    description: `${tag} 태그가 붙은 모든 게시물 찾아보기`,
+  };
+}
 
 type TagsPaginationProps = { params: { tag: string; page: string } };
 

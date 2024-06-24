@@ -1,7 +1,47 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { HtmlRenderer, PostComments } from "@/components";
-import { getPostByYearAndSlug, markdownToHtml } from "@/libs";
+import { SITE_CONFIG } from "@/constants";
+import { getAllPostSlugs, getPostByYearAndSlug, markdownToHtml } from "@/libs";
+
+export async function generateStaticParams() {
+  const slugs = getAllPostSlugs();
+  return slugs.map((slug) => {
+    const [year, ...slugParts] = slug.split("/");
+    return { year, slug: slugParts };
+  });
+}
+
+export async function generateMetadata({
+  params,
+}: PostDetailProps): Promise<Metadata> {
+  const { year, slug } = params;
+  const post = getPostByYearAndSlug(year, slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const { frontMatter } = post;
+
+  return {
+    title: frontMatter.title,
+    description: frontMatter.summary || "",
+    openGraph: {
+      title: frontMatter.title,
+      description: frontMatter.summary || "",
+      type: "article",
+      publishedTime: frontMatter.publishedAt,
+      url: `${SITE_CONFIG.url}/posts/${year}/${slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontMatter.title,
+      description: frontMatter.summary || "",
+    },
+  };
+}
 
 type PostDetailProps = { params: { year: string; slug: string } };
 
