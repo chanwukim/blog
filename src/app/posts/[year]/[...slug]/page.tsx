@@ -18,14 +18,14 @@ export default async function PostDetail({ params }: PostDetailProps) {
   const html = await markdownToHtml(post.content);
 
   return (
-    <div>
-      <div className="mx-auto w-full">
+    <>
+      <article className="mx-auto w-full">
         <div className="mb-10 border-b border-b-gray-300 pb-10 pt-10">
           <h1 className="text-3xl font-semibold leading-normal">
             {frontMatter.title}
           </h1>
 
-          <div className="">
+          <div>
             <time
               className="text-mute text-sm"
               dateTime={frontMatter.publishedAt}
@@ -36,8 +36,8 @@ export default async function PostDetail({ params }: PostDetailProps) {
         </div>
 
         <HtmlRenderer html={html} />
-      </div>
+      </article>
       <PostComments />
-    </div>
+    </>
   );
 }
