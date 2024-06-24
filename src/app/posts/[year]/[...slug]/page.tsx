@@ -60,7 +60,7 @@ export default async function PostDetail({ params }: PostDetailProps) {
   return (
     <>
       <article className="mx-auto w-full">
-        <div className="mb-10 border-b border-b-gray-300 pb-10 pt-10">
+        <div className="border-b border-b-gray-300 pb-10 pt-10">
           <h1 className="text-3xl font-semibold leading-normal">
             {frontMatter.title}
           </h1>
@@ -75,9 +75,9 @@ export default async function PostDetail({ params }: PostDetailProps) {
           </div>
         </div>
 
-        <HtmlRenderer html={html} />
+        <HtmlRenderer html={html} className="mt-10" />
       </article>
-      <PostComments />
+      <PostComments className="mt-14" />
     </>
   );
 }
