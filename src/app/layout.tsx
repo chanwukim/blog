@@ -3,6 +3,8 @@ import { Noto_Sans_KR } from "next/font/google";
 
 import "./globals.css";
 
+import { Layout } from "@/components/layout";
+
 const font = Noto_Sans_KR({
   weight: ["400", "500", "700", "800"],
   display: "swap",
@@ -33,7 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={font.className}>{children}</body>
+      <body
+        className={`${font.className} min-h-screen bg-white text-neutral-900/95 antialiased`}
+      >
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
