@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-mute {
+    color: theme(colors.neutral.900/0.5);
+  }
+}
