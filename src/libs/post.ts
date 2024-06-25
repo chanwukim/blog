@@ -28,8 +28,13 @@ export function getAllPostSlugs(): string[] {
   return slugs.reverse();
 }
 
-export function getPostByYearAndSlug(year: string, slug: string): Post {
+export function getPostByYearAndSlug(year: string, slug: string) {
   const fullPath = path.join(postsDirectory, `${year}/${slug}.md`);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
   const fileContent = fs.readFileSync(fullPath, "utf-8");
   const { data, content } = matter(fileContent);
 
@@ -50,13 +55,15 @@ export function getPostByYearAndSlug(year: string, slug: string): Post {
   return post;
 }
 
-export function getAllPosts(): Post[] {
+export function getAllPosts() {
   return getAllPostSlugs()
     .map((s) => {
       const [year, slug] = s.split("/");
       return getPostByYearAndSlug(year, slug);
     })
-    .filter((post) => post.frontMatter.isPublished)
+    .filter(
+      (post): post is Post => post !== null && post.frontMatter.isPublished,
+    )
     .sort(
       (a, b) =>
         new Date(b.frontMatter.publishedAt).getTime() -
@@ -64,7 +71,7 @@ export function getAllPosts(): Post[] {
     );
 }
 
-export function getPaginatedPosts(page: number, limit: number): Post[] {
+export function getPaginatedPosts(page: number, limit: number) {
   const start = (page - 1) * limit;
   const end = start + limit;
 
@@ -73,7 +80,10 @@ export function getPaginatedPosts(page: number, limit: number): Post[] {
 
 export function getAllTags() {
   const tags = getAllPosts().reduce<string[]>((prev: string[], currentPost) => {
-    currentPost.frontMatter.tags.forEach((tag) => prev.push(tag));
+    if (currentPost && currentPost.frontMatter.tags) {
+      currentPost.frontMatter.tags.forEach((tag) => prev.push(tag));
+    }
+
     return prev;
   }, []);
 
