@@ -8,7 +8,9 @@ import { unified } from "unified";
 
 import "prismjs/components/prism-java.min";
 import "prismjs/components/prism-javascript.min";
+import "prismjs/components/prism-jsx";
 import "prismjs/components/prism-typescript.min";
+import "prismjs/components/prism-tsx";
 import "prismjs/components/prism-css.min";
 import "prismjs/components/prism-sql.min";
 import "prismjs/components/prism-yaml";
