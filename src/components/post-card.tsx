@@ -13,7 +13,7 @@ export function PostCard({ post }: PostCardProps) {
         <Link href={`/posts/${post.slug}`}>{post.frontMatter.title}</Link>
       </h1>
       {post.frontMatter.summary && (
-        <p className="text-mute text-sm">{post.frontMatter.summary}</p>
+        <p className="text-mute mt-1 text-sm">{post.frontMatter.summary}</p>
       )}
       <div className="space-x-2">
         <time
