@@ -1,6 +1,6 @@
 ---
 title: "리액트 React Event Object와 합성 이벤트"
-tags: ["react", "DOM"]
+tags: ["React", "DOM"]
 publishedAt: "2024-06-28"
 isPublished: true
 ---
