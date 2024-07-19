@@ -42,9 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   allTags.forEach((tag) => {
     const encodedTag = encodeURIComponent(tag);
 
-    const totalPostsByTag = allPosts.filter((post) =>
-      post.frontMatter.tags.includes(tag),
-    ).length;
+    const totalPostsByTag = allPosts.filter((post) => post.frontMatter.tags.includes(tag)).length;
 
     const totalPages = Math.ceil(totalPostsByTag / SITE_CONFIG.limitPerPage);
 

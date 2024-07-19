@@ -55,9 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body
-        className={`${font.className} min-h-screen bg-white text-neutral-900/95 antialiased`}
-      >
+      <body className={`${font.className} min-h-screen bg-white text-neutral-900/95 antialiased`}>
         <Layout>{children}</Layout>
         <Analytics />
       </body>

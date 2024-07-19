@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { HtmlRenderer, PostComments } from "@/components";
+import { PostMetadata } from "@/components/post-metadata";
 import { SITE_CONFIG } from "@/constants";
 import { getAllPostSlugs, getPostByYearAndSlug, markdownToHtml } from "@/libs";
 
@@ -13,9 +14,7 @@ export async function generateStaticParams() {
   });
 }
 
-export async function generateMetadata({
-  params,
-}: PostDetailProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PostDetailProps): Promise<Metadata> {
   const { year, slug } = params;
   const post = getPostByYearAndSlug(year, slug);
 
@@ -43,7 +42,9 @@ export async function generateMetadata({
   };
 }
 
-type PostDetailProps = { params: { year: string; slug: string } };
+interface PostDetailProps {
+  params: { year: string; slug: string };
+}
 
 export default async function PostDetail({ params }: PostDetailProps) {
   const { year, slug } = params;
@@ -61,18 +62,9 @@ export default async function PostDetail({ params }: PostDetailProps) {
     <>
       <article className="mx-auto w-full">
         <div className="border-b border-b-gray-300 pb-10 pt-10">
-          <h1 className="text-3xl font-semibold leading-normal">
-            {frontMatter.title}
-          </h1>
+          <h1 className="text-3xl font-semibold leading-normal">{frontMatter.title}</h1>
 
-          <div>
-            <time
-              className="text-mute text-sm"
-              dateTime={frontMatter.publishedAt}
-            >
-              {frontMatter.publishedAt}
-            </time>
-          </div>
+          <PostMetadata content={post.content} publishedAt={post.frontMatter.publishedAt} />
         </div>
 
         <HtmlRenderer html={html} className="mt-10" />

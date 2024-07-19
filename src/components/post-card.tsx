@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { Post } from "@/types";
 
+import { PostMetadata } from "./post-metadata";
+
 type PostCardProps = {
   post: Post;
 };
@@ -15,14 +17,7 @@ export function PostCard({ post }: PostCardProps) {
       {post.frontMatter.summary && (
         <p className="text-mute mt-1 text-sm">{post.frontMatter.summary}</p>
       )}
-      <div className="space-x-2">
-        <time
-          dateTime={post.frontMatter.publishedAt}
-          className="text-mute text-xs"
-        >
-          {post.frontMatter.publishedAt}
-        </time>
-      </div>
+      <PostMetadata content={post.content} publishedAt={post.frontMatter.publishedAt} />
     </article>
   );
 }

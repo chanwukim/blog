@@ -4,7 +4,9 @@ import { Pagination, PostCard, Tags } from "@/components";
 import { SITE_CONFIG } from "@/constants";
 import { getAllTags, getPaginatedPosts, getPostCount } from "@/libs";
 
-type PostPaginationProps = { params: { page: string[] } };
+interface PostPaginationProps {
+  params: { page: string[] };
+}
 
 export default function PostPagination({ params }: PostPaginationProps) {
   const currentPage = parseInt(params.page[0] || "1", 10);
@@ -24,11 +26,7 @@ export default function PostPagination({ params }: PostPaginationProps) {
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        basePath=""
-      />
+      <Pagination currentPage={currentPage} totalPages={totalPages} basePath="" />
       <Tags tags={allTags} />
     </div>
   );

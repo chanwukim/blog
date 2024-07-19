@@ -12,9 +12,7 @@ export async function generateStaticParams() {
   const params: { tag: string; page: string[] }[] = [];
 
   allTags.forEach((tag) => {
-    const postsByTag = allPosts.filter((post) =>
-      post.frontMatter.tags.includes(tag),
-    );
+    const postsByTag = allPosts.filter((post) => post.frontMatter.tags.includes(tag));
 
     const totalPages = Math.ceil(postsByTag.length / SITE_CONFIG.limitPerPage);
 
@@ -26,9 +24,7 @@ export async function generateStaticParams() {
   return params;
 }
 
-export async function generateMetadata({
-  params,
-}: TagsPaginationProps): Promise<Metadata> {
+export async function generateMetadata({ params }: TagsPaginationProps): Promise<Metadata> {
   const { tag } = params;
 
   return {
@@ -37,7 +33,9 @@ export async function generateMetadata({
   };
 }
 
-type TagsPaginationProps = { params: { tag: string; page: string } };
+interface TagsPaginationProps {
+  params: { tag: string; page: string };
+}
 
 export default function TagsPagination({ params }: TagsPaginationProps) {
   const { tag: encodedTag } = params;
@@ -46,18 +44,14 @@ export default function TagsPagination({ params }: TagsPaginationProps) {
   const allPosts = getAllPosts();
   const allTags = getAllTags();
 
-  const postsFoundByTag = allPosts.filter((post) =>
-    post.frontMatter.tags.find((t) => t === tag),
-  );
+  const postsFoundByTag = allPosts.filter((post) => post.frontMatter.tags.find((t) => t === tag));
 
   if (postsFoundByTag.length < 1) {
     notFound();
   }
 
   const currentPage = parseInt(params.page[0] || "1", 10);
-  const totalPages = Math.ceil(
-    postsFoundByTag.length / SITE_CONFIG.limitPerPage,
-  );
+  const totalPages = Math.ceil(postsFoundByTag.length / SITE_CONFIG.limitPerPage);
 
   const startIndex = (currentPage - 1) * SITE_CONFIG.limitPerPage;
   const endIndex = startIndex + SITE_CONFIG.limitPerPage;
@@ -76,11 +70,7 @@ export default function TagsPagination({ params }: TagsPaginationProps) {
           <PostCard key={post.slug} post={post} />
         ))}
       </div>
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        basePath={basePath}
-      />
+      <Pagination currentPage={currentPage} totalPages={totalPages} basePath={basePath} />
       <Tags activeTag={tag} tags={allTags} />
     </div>
   );

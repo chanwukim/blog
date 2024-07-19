@@ -61,9 +61,7 @@ export function getAllPosts() {
       const [year, slug] = s.split("/");
       return getPostByYearAndSlug(year, slug);
     })
-    .filter(
-      (post): post is Post => post !== null && post.frontMatter.isPublished,
-    )
+    .filter((post): post is Post => post !== null && post.frontMatter.isPublished)
     .sort(
       (a, b) =>
         new Date(b.frontMatter.publishedAt).getTime() -

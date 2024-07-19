@@ -37,9 +37,7 @@ export function Layout({ children }: PropsWithChildren) {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-28">
-        {children}
-      </main>
+      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-28">{children}</main>
 
       <footer>
         <div className="flex items-center justify-center space-x-3 pb-20">

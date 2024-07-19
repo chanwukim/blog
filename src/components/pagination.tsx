@@ -2,17 +2,13 @@ import Link from "next/link";
 
 const PAGE_GROUP_SIZE = 5;
 
-type PaginationLinkProps = {
+interface PaginationLinkProps {
   isActive?: boolean;
   href: string;
   children: React.ReactNode;
-};
+}
 
-function PaginationLink({
-  isActive = false,
-  href,
-  children,
-}: PaginationLinkProps) {
+function PaginationLink({ isActive = false, href, children }: PaginationLinkProps) {
   if (isActive) {
     return (
       <span className="inline-flex h-10 w-10 select-none items-center justify-center rounded border border-gray-300 text-sm font-medium">
@@ -37,18 +33,11 @@ type PaginationProps = {
   basePath?: string;
 };
 
-export function Pagination({
-  currentPage,
-  totalPages,
-  basePath = "",
-}: PaginationProps) {
+export function Pagination({ currentPage, totalPages, basePath = "" }: PaginationProps) {
   const currentGroup = Math.floor((currentPage - 1) / PAGE_GROUP_SIZE);
   const startPage = currentGroup * PAGE_GROUP_SIZE + 1;
   const endPage = Math.min(startPage + PAGE_GROUP_SIZE - 1, totalPages);
-  const pageNums = Array.from(
-    { length: endPage - startPage + 1 },
-    (_, i) => startPage + i,
-  );
+  const pageNums = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
 
   const hasPrev = currentGroup > 0;
   const hasNext = endPage < totalPages;
@@ -75,10 +64,7 @@ export function Pagination({
 
         {pageNums.map((pageNum) => (
           <li key={pageNum}>
-            <PaginationLink
-              isActive={pageNum === currentPage}
-              href={`${basePath}/${pageNum}`}
-            >
+            <PaginationLink isActive={pageNum === currentPage} href={`${basePath}/${pageNum}`}>
               {pageNum}
             </PaginationLink>
           </li>
