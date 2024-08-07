@@ -6,6 +6,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 
+/* eslint-disable import/no-unresolved */
 import "prismjs/components/prism-java.min";
 import "prismjs/components/prism-javascript.min";
 import "prismjs/components/prism-jsx";

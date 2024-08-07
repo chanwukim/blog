@@ -3,6 +3,7 @@ import clsx from "clsx";
 import "@/styles/prism-vsc-dark-plus.css";
 import "@/styles/prism-plugin.css";
 
+/* eslint-disable import/no-unresolved */
 import "prismjs/plugins/toolbar/prism-toolbar.min.css";
 import "prismjs/plugins/toolbar/prism-toolbar.min";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min";
