@@ -49,3 +49,7 @@ isPublished: true
 
 - https://minimal.gallery/
 - https://www.awwwards.com/
+
+## CSS
+
+- https://animista.net/
