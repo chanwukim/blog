@@ -9,7 +9,7 @@ export function Layout({ children }: PropsWithChildren) {
     <div className="flex min-h-screen flex-col">
       <header className="fixed top-0 z-[1000] w-full bg-white">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5">
-          <h1>
+          <div>
             <Link href="/" className="flex items-center">
               <Image
                 alt="profile image"
@@ -20,7 +20,7 @@ export function Layout({ children }: PropsWithChildren) {
               />
               <span className="font-md ml-2">{SITE_CONFIG.author.name}</span>
             </Link>
-          </h1>
+          </div>
 
           <ul className="flex gap-2.5">
             <li>
