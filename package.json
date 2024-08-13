@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "dev": "npx npm-check-updates && next dev",
+    "dev": "npx npm-check-updates && next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --cache --write ."
+    "format": "prettier --write ."
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
