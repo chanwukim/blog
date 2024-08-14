@@ -1,12 +1,15 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import typography from "@tailwindcss/typography";
+import type { Config } from "tailwindcss";
+
+const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
-      typography: (theme) => ({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      typography: (theme: any) => ({
         DEFAULT: {
           css: {
-            "--tw-prose-body": theme("colors.neutral.900") + "f2",
+            "--tw-prose-body": `${theme("colors.neutral.900")}f2`,
             h1: {
               fontSize: theme("fontSize.2xl")[0],
             },
@@ -22,12 +25,12 @@ module.exports = {
               fontSize: theme("fontSize.sm")[0],
               marginTop: "0",
               marginBottom: "0",
-            }, // 14px
+            },
             li: {
               fontSize: theme("fontSize.sm")[0],
               marginTop: theme("spacing.1"),
               marginBottom: theme("spacing.1"),
-            }, // 14px and 4px
+            },
             "blockquote p:first-of-type::before": { content: "none" },
             "blockquote p:first-of-type::after": { content: "none" },
             "blockquote p": { fontStyle: "normal", fontWeight: "400" },
@@ -43,9 +46,9 @@ module.exports = {
             code: {
               color: theme("colors.gray.800"),
               backgroundColor: theme("colors.gray.100"),
-              padding: theme("spacing.1") + " " + theme("spacing.2"), // 4px 8px
-              borderRadius: theme("borderRadius.sm"), // 4px
-              fontSize: "0.8em",
+              padding: ".2em .4em",
+              borderRadius: theme("borderRadius.sm"),
+              fontSize: "0.85em",
               fontWeight: "500",
             },
             img: {
@@ -56,5 +59,7 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [typography],
 };
+
+export default config;
