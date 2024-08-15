@@ -9,7 +9,7 @@ export function PostMetadata({ content, publishedAt }: PostMetadataProps) {
   const { text: readMin } = getReadingTimeInMinutes(content);
 
   return (
-    <dl className="text-mute mt-2 flex items-center text-xs">
+    <dl className="mt-1 flex items-center text-xs text-foreground-muted">
       <dt className="sr-only">Published at</dt>
       <dd>
         <time dateTime={publishedAt}>{publishedAt}</time>

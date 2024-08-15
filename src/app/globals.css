@@ -2,8 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-  .text-mute {
-    color: theme(colors.neutral.900/0.5);
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --background-muted: 243 244 246;
+    --foreground: 1 1 1;
+    --foreground-muted: 1 1 1;
+    --foreground-disabled: 1 1 1;
+  }
+
+  body {
+    @apply bg-background text-foreground;
   }
 }

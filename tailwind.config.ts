@@ -5,6 +5,18 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      colors: {
+        background: {
+          DEFAULT: "rgb(var(--background) / <alpha-value>)",
+          muted: "rgb(var(--background-muted) / <alpha-value>)",
+        },
+        foreground: {
+          DEFAULT: "rgb(var(--foreground) / 0.87)",
+          muted: "rgb(var(--foreground-muted) / 0.55)",
+          disabled: "rgb(var(--foreground-disabled) / 0.4)",
+        },
+        border: "rgb(var(--border) / <alpha-value>)",
+      },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       typography: (theme: any) => ({
         DEFAULT: {
@@ -25,6 +37,14 @@ const config: Config = {
               fontSize: theme("fontSize.sm")[0],
               marginTop: "0",
               marginBottom: "0",
+            },
+            a: {
+              color: theme("colors.foreground"),
+              fontWeight: 400,
+              textDecoration: "none",
+              borderBottomWidth: theme("borderWidth.DEFAULT"),
+              borderBottomStyle: "solid",
+              borderColor: theme("colors.foreground-muted"),
             },
             li: {
               fontSize: theme("fontSize.sm")[0],

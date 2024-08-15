@@ -17,13 +17,10 @@ Next.js 14.x 버전 app router에서 css가 중복되어 빌드 되거나, 순�
 
 내 경험으로는 [module.css](https://github.com/css-modules/css-modules), [vanilla-extract](https://vanilla-extract.style/), [pigment-css](https://github.com/mui/pigment-css)에서 라이브러리나 프레임워크 환경에 상관 없이 나타났다.
 
-> <p style='text-align: center;'>reset style이 두 번 빌드되어 나타나더니,</p>
->
-> <img alt="duplicate styles" src="/2024/nextjs-app-router-css-import-order-issues/01.png"  />
->
-> <p style='text-align: center;'>결과적으로 컴포넌트에 reset style이 덮어씌워져 스타일이 깨져버린다.</p>
->
-> <img alt="broken styles" src="/2024/nextjs-app-router-css-import-order-issues/02.png"  />
+<img alt="duplicate styles" src="/2024/nextjs-app-router-css-import-order-issues/01.png"  />
+<p style='text-align: center;'>reset style이 두 번 빌드되어 나타나더니,</p>
+<img alt="broken styles" src="/2024/nextjs-app-router-css-import-order-issues/02.png"  />
+<p style='text-align: center;'>결과적으로 컴포넌트에 reset style이 덮어씌워져 스타일이 깨져버린다.</p>
 
 ## 해결 방법
 

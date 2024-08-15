@@ -6,9 +6,9 @@ import { SITE_CONFIG } from "@/constants";
 
 export function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="fixed top-0 z-[1000] w-full bg-white">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-5">
+    <div className="mx-auto min-h-screen max-w-2xl">
+      <header className="w-full bg-white">
+        <div className="mx-auto flex items-center justify-between px-4 py-5">
           <div>
             <Link href="/" className="flex items-center">
               <Image
@@ -18,7 +18,7 @@ export function Layout({ children }: PropsWithChildren) {
                 height={32}
                 className="rounded-full"
               />
-              <span className="font-md ml-2">{SITE_CONFIG.author.name}</span>
+              <span className="ml-2 text-sm font-bold">{SITE_CONFIG.author.name}</span>
             </Link>
           </div>
 
@@ -37,10 +37,10 @@ export function Layout({ children }: PropsWithChildren) {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-28">{children}</main>
+      <main className="px-4">{children}</main>
 
-      <footer>
-        <div className="flex items-center justify-center space-x-3 pb-20">
+      <footer className="pb-20 pt-10">
+        <div className="flex items-center justify-center space-x-3">
           <span className="text-mute text-xs">
             {`© ${new Date().getFullYear()}`} {SITE_CONFIG.author.name}
           </span>

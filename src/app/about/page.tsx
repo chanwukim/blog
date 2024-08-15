@@ -1,9 +1,9 @@
 import { SITE_CONFIG } from "@/constants";
 
-export default function About() {
+export default function AboutPage() {
   return (
     <section>
-      <h1 className="text-3xl font-extrabold">ChanWu Kim</h1>
+      <h1 className="text-2xl font-extrabold">ChanWu Kim</h1>
 
       <p className="mt-8">
         Full-stack web developer interested in UI/UX, currently focused on the frontend. <br />I

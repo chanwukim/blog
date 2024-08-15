@@ -46,7 +46,7 @@ interface PostDetailProps {
   params: { year: string; slug: string };
 }
 
-export default async function PostDetail({ params }: PostDetailProps) {
+export default async function PostDetailPage({ params }: PostDetailProps) {
   const { year, slug } = params;
 
   const post = getPostByYearAndSlug(year, slug);
@@ -61,13 +61,11 @@ export default async function PostDetail({ params }: PostDetailProps) {
   return (
     <>
       <article className="mx-auto w-full">
-        <div className="border-b border-b-gray-300 pb-10 pt-10">
-          <h1 className="text-3xl font-semibold leading-normal">{frontMatter.title}</h1>
-
+        <header className="my-8">
+          <h1 className="text-2xl font-semibold leading-normal">{frontMatter.title}</h1>
           <PostMetadata content={post.content} publishedAt={post.frontMatter.publishedAt} />
-        </div>
-
-        <HtmlRenderer html={html} className="mt-10" />
+        </header>
+        <HtmlRenderer html={html} />
       </article>
       <PostComments className="mt-14" />
     </>

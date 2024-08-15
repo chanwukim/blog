@@ -6,7 +6,10 @@ import { Tag } from "./tag";
 
 const MAX_TAG_SIZE = 10;
 
-type TagsProps = { tags: string[]; activeTag?: string };
+interface TagsProps {
+  tags: string[];
+  activeTag?: string;
+}
 
 export function Tags({ tags, activeTag }: TagsProps) {
   const [isOpen, setIsOpen] = useState(false);

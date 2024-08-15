@@ -7,11 +7,11 @@ const variants = {
   filled: "bg-gray-900 text-white",
 } as const;
 
-export type TagProps = {
+export interface TagProps {
   name: string;
   href?: string;
   variant?: keyof typeof variants;
-};
+}
 
 export function Tag({ name, href, variant = "light" }: TagProps) {
   return (

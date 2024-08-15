@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { PostCard, Pagination, Tags } from "@/components";
+import { Pagination, Tags, Posts } from "@/components";
 import { SITE_CONFIG } from "@/constants";
 import { getAllPosts, getAllTags } from "@/libs";
 
@@ -37,7 +37,7 @@ interface TagsPaginationProps {
   params: { tag: string; page: string };
 }
 
-export default function TagsPagination({ params }: TagsPaginationProps) {
+export default function TagsPaginationPage({ params }: TagsPaginationProps) {
   const { tag: encodedTag } = params;
   const tag = decodeURIComponent(encodedTag);
 
@@ -65,11 +65,7 @@ export default function TagsPagination({ params }: TagsPaginationProps) {
 
   return (
     <div className="flex flex-col">
-      <div className="space-y-10">
-        {currentPosts.map((post) => (
-          <PostCard key={post.slug} post={post} />
-        ))}
-      </div>
+      <Posts list={currentPosts} />
       <Pagination currentPage={currentPage} totalPages={totalPages} basePath={basePath} />
       <Tags activeTag={tag} tags={allTags} />
     </div>
