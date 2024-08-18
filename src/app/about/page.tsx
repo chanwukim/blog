@@ -2,14 +2,12 @@ import { SITE_CONFIG } from "@/constants";
 
 export default function AboutPage() {
   return (
-    <section>
+    <>
       <h1 className="text-2xl font-extrabold">ChanWu Kim</h1>
-
       <p className="mt-8">
         Full-stack web developer interested in UI/UX, currently focused on the frontend. <br />I
         like writing code with an iced americano.
       </p>
-
       <div className="mt-4">
         <a
           target="_blank"
@@ -20,6 +18,6 @@ export default function AboutPage() {
           Github
         </a>
       </div>
-    </section>
+    </>
   );
 }

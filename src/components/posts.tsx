@@ -10,20 +10,18 @@ interface PostsItemProps {
 
 function PostsItem({ post }: PostsItemProps) {
   return (
-    <article>
-      <Link
-        href={`/posts/${post.slug}`}
-        className="block px-1 py-3 transition-[background-color] hover:bg-background-muted active:bg-foreground/10"
-      >
-        <h1 className="line-clamp-2 overflow-hidden text-ellipsis font-medium">
-          {post.frontMatter.title}
-        </h1>
-        {post.frontMatter.summary && (
-          <p className="my-2 text-sm text-foreground-muted">{post.frontMatter.summary}</p>
-        )}
-        <PostMetadata content={post.content} publishedAt={post.frontMatter.publishedAt} />
-      </Link>
-    </article>
+    <Link
+      href={`/posts/${post.slug}`}
+      className="block px-1 py-3 transition-[background-color] hover:bg-background-muted active:bg-foreground/10"
+    >
+      <h2 className="line-clamp-2 overflow-hidden text-ellipsis font-medium">
+        {post.frontMatter.title}
+      </h2>
+      {post.frontMatter.summary && (
+        <p className="my-2 text-sm text-foreground-muted">{post.frontMatter.summary}</p>
+      )}
+      <PostMetadata content={post.content} publishedAt={post.frontMatter.publishedAt} />
+    </Link>
   );
 }
 

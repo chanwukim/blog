@@ -11,7 +11,7 @@ interface PaginationLinkProps {
 function PaginationLink({ isActive = false, href, children }: PaginationLinkProps) {
   if (isActive) {
     return (
-      <span className="inline-flex h-10 w-10 select-none items-center justify-center rounded border border-gray-300 text-sm font-medium">
+      <span className="inline-flex h-10 w-10 select-none items-center justify-center rounded text-sm font-medium underline underline-offset-4">
         {children}
       </span>
     );
@@ -20,7 +20,7 @@ function PaginationLink({ isActive = false, href, children }: PaginationLinkProp
   return (
     <Link
       href={href}
-      className="inline-flex h-10 w-10 select-none items-center justify-center rounded text-sm font-medium transition-[background-color] hover:bg-gray-100"
+      className="inline-flex h-10 w-10 select-none items-center justify-center rounded text-sm font-medium underline-offset-4 transition-[background-color] hover:underline"
     >
       {children}
     </Link>
@@ -44,7 +44,7 @@ export function Pagination({ currentPage, totalPages, basePath = "" }: Paginatio
 
   return (
     <nav className="mt-10 flex justify-center">
-      <h1 className="sr-only">pager</h1>
+      <h1 className="sr-only">페이지네이션</h1>
       <ul className="flex gap-2">
         {hasPrev && (
           <li>
