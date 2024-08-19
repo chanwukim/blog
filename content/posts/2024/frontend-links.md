@@ -10,6 +10,7 @@ isPublished: true
 ## 기술
 
 - https://github.com/ssi02014/react-query-tutorial : TanStack Query(React)에서 자주 사용하는 개념들을 정리한 저장소
+- https://magicui.design : 디자인 엔지니어를 위한 UI 라이브러리 모음
 
 ## 아이콘
 
