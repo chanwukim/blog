@@ -4,10 +4,12 @@ import { PropsWithChildren } from "react";
 
 import { SITE_CONFIG } from "@/constants";
 
+import { ThemeChanger } from "./theme-toggle";
+
 export function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="mx-auto min-h-screen max-w-2xl">
-      <header className="w-full bg-white">
+    <div className="mx-auto flex min-h-screen max-w-2xl flex-col">
+      <header className="w-full bg-background">
         <div className="mx-auto flex items-center justify-between px-4 py-5">
           <div>
             <Link href="/" className="flex items-center">
@@ -22,22 +24,35 @@ export function Layout({ children }: PropsWithChildren) {
             </Link>
           </div>
 
-          <ul className="flex gap-2.5">
-            <li>
-              <Link href="/" className={"px-1 py-2 text-sm"}>
-                home
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="px-1 py-2 text-sm">
-                about
-              </Link>
-            </li>
-          </ul>
+          <div className="flex items-center gap-2.5">
+            <div>
+              <ThemeChanger />
+            </div>
+            <nav>
+              <ul className="flex gap-2.5">
+                <li>
+                  <Link
+                    href="/"
+                    className="px-1 py-2 text-sm hover:bg-background-muted hover:underline"
+                  >
+                    home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/about"
+                    className="px-1 py-2 text-sm hover:bg-background-muted hover:underline"
+                  >
+                    about
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </header>
 
-      <main className="px-4">{children}</main>
+      <main className="flex-1 px-4">{children}</main>
 
       <footer className="pb-20 pt-10">
         <div className="flex items-center justify-center space-x-3">

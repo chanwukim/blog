@@ -3,8 +3,8 @@ import Link from "next/link";
 import clsx from "clsx";
 
 const variants = {
-  light: "bg-gray-100 text-gray-500",
-  filled: "bg-gray-900 text-white",
+  ghost: "text-foreground-muted hover:underline",
+  filled: "bg-background-muted",
 } as const;
 
 export interface TagProps {
@@ -13,11 +13,14 @@ export interface TagProps {
   variant?: keyof typeof variants;
 }
 
-export function Tag({ name, href, variant = "light" }: TagProps) {
+export function Tag({ name, href, variant = "ghost" }: TagProps) {
   return (
     <Link
       href={href ? href : `/tags/${name}/1`}
-      className={clsx(variants[variant], "rounded-full px-3 py-1 text-sm font-medium")}
+      className={clsx(
+        variants[variant],
+        "inline-flex items-center justify-center px-3 py-2 text-xs font-medium",
+      )}
     >
       {name}
     </Link>

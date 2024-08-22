@@ -1,9 +1,9 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 
-import "./globals.css";
-
-import { Analytics, Layout } from "@/components";
+import { Analytics, Layout, Providers } from "@/components";
 import { SITE_CONFIG } from "@/constants";
 
 const font = Noto_Sans_KR({
@@ -54,9 +54,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
+    <html lang="ko" suppressHydrationWarning>
       <body className={`${font.className} antialiased`}>
-        <Layout>{children}</Layout>
+        <Providers>
+          <Layout>{children}</Layout>
+        </Providers>
         <Analytics />
       </body>
     </html>

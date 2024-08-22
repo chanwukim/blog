@@ -4,5 +4,6 @@ export * from "./layout";
 export * from "./pagination";
 export * from "./post-comments";
 export * from "./posts";
+export * from "./providers";
 export * from "./tag";
 export * from "./tags";

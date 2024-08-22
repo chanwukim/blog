@@ -15,7 +15,7 @@ export function HtmlRenderer({ html, className = "" }: HtmlRendererProps) {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: html }}
-      className={clsx("prose max-w-none", className)}
+      className={clsx("prose max-w-none dark:prose-invert", className)}
     />
   );
 }

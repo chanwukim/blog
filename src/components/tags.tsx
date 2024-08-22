@@ -17,16 +17,16 @@ export function Tags({ tags, activeTag }: TagsProps) {
   const displayedTags = isOpen ? tags : tags.slice(0, MAX_TAG_SIZE);
 
   return (
-    <section className="order-first mb-12">
-      <h1 className="mb-2 text-sm font-semibold">TAGS</h1>
+    <section className="order-first mb-3 mt-12">
+      <h1 className="sr-only">TAGS</h1>
 
-      <ul className="flex flex-wrap gap-3">
+      <ul className="flex flex-wrap gap-1">
         <li>
-          <Tag name="전체" href="/" variant={activeTag ? "light" : "filled"} />
+          <Tag name="전체" href="/" variant={activeTag ? "ghost" : "filled"} />
         </li>
         {displayedTags.map((tag) => (
           <li key={tag}>
-            <Tag name={tag} variant={tag === activeTag ? "filled" : "light"} />
+            <Tag name={tag} variant={tag === activeTag ? "filled" : "ghost"} />
           </li>
         ))}
       </ul>
