@@ -1,13 +1,13 @@
-export type FrontMatter = {
+export interface FrontMatter {
   title: string;
   summary: string;
   tags: string[];
   publishedAt: string;
   isPublished: boolean;
-};
+}
 
-export type Post = {
+export interface Post {
   slug: string;
   frontMatter: FrontMatter;
   content: string;
-};
+}

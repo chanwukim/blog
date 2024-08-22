@@ -27,11 +27,11 @@ function PaginationLink({ isActive = false, href, children }: PaginationLinkProp
   );
 }
 
-type PaginationProps = {
+interface PaginationProps {
   currentPage: number;
   totalPages: number;
   basePath?: string;
-};
+}
 
 export function Pagination({ currentPage, totalPages, basePath = "" }: PaginationProps) {
   const currentGroup = Math.floor((currentPage - 1) / PAGE_GROUP_SIZE);

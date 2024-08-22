@@ -17,7 +17,7 @@ export function Tags({ tags, activeTag }: TagsProps) {
   const displayedTags = isOpen ? tags : tags.slice(0, MAX_TAG_SIZE);
 
   return (
-    <section className="order-first mb-3 mt-12">
+    <section className="order-first mb-3 mt-8">
       <h1 className="sr-only">TAGS</h1>
 
       <ul className="flex flex-wrap gap-1">

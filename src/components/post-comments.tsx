@@ -2,9 +2,9 @@
 
 import { SITE_CONFIG } from "@/constants";
 
-type PostCommentsProps = {
+interface PostCommentsProps {
   className?: string;
-};
+}
 
 export function PostComments({ className = "" }: PostCommentsProps) {
   return (
