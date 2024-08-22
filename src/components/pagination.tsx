@@ -42,6 +42,10 @@ export function Pagination({ currentPage, totalPages, basePath = "" }: Paginatio
   const hasPrev = currentGroup > 0;
   const hasNext = endPage < totalPages;
 
+  if (totalPages < 2) {
+    return null;
+  }
+
   return (
     <nav className="mt-10 flex justify-center">
       <h1 className="sr-only">페이지네이션</h1>
