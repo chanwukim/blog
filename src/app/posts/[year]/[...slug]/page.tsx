@@ -33,6 +33,11 @@ export async function generateMetadata({ params }: PostDetailProps): Promise<Met
       type: "article",
       publishedTime: frontMatter.publishedAt,
       url: `${SITE_CONFIG.url}/posts/${year}/${slug}`,
+      images: [
+        {
+          url: `${SITE_CONFIG.url}/og?title=${frontMatter.title}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
