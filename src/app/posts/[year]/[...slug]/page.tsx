@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: PostDetailProps): Promise<Met
   }
 
   const { frontMatter } = post;
+  const ogImage = `${SITE_CONFIG.url}/og?title=${frontMatter.title}`;
 
   return {
     title: frontMatter.title,
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: PostDetailProps): Promise<Met
       url: `${SITE_CONFIG.url}/posts/${year}/${slug}`,
       images: [
         {
-          url: `${SITE_CONFIG.url}/og?title=${frontMatter.title}`,
+          url: ogImage,
         },
       ],
     },
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: PostDetailProps): Promise<Met
       card: "summary_large_image",
       title: frontMatter.title,
       description: frontMatter.summary || "",
+      images: [ogImage],
     },
   };
 }

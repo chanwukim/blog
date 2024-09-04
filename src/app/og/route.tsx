@@ -15,9 +15,14 @@ export async function GET(req: NextRequest) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
+          alignItems: "center",
           justifyContent: "center",
           backgroundImage: `url(${SITE_CONFIG.url}/og-bg.jpg)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          fontSize: 32,
+          fontWeight: 600,
         }}
       >
         {title}
