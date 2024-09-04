@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          fontSize: 32,
+          fontSize: 48,
           fontWeight: 600,
         }}
       >
