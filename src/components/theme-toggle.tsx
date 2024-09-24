@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import { useTheme } from "next-themes";
 
+import cn from "@/lib/cn";
+
 function SunIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -37,7 +39,7 @@ function MoonIcon({ className }: { className?: string }) {
 /**
  * @see https://github.com/pacocoursey/next-themes?tab=readme-ov-file#avoid-hydration-mismatch
  */
-export function ThemeChanger() {
+export default function ThemeToggle({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -54,14 +56,25 @@ export function ThemeChanger() {
     setTheme(theme === "light" ? "dark" : "light");
   }
 
-  const icon = theme === "light" ? <SunIcon /> : <MoonIcon />;
-
   return (
     <button
-      className="mt-1 inline-flex items-center justify-center p-2 text-foreground hover:bg-background-muted"
+      className={cn(
+        "inline-flex h-9 w-9 items-center justify-center text-foreground hover:bg-background-muted",
+        className,
+      )}
       onClick={handleChangeTheme}
     >
-      {icon}
+      {theme === "dark" ? (
+        <>
+          <span className="sr-only">라이트 테마로 변경</span>
+          <SunIcon aria-hidden className="mt-0.5" />
+        </>
+      ) : (
+        <>
+          <span className="sr-only">다크 테마로 변경</span>
+          <MoonIcon aria-hidden className="mt-0.5" />
+        </>
+      )}
     </button>
   );
 }

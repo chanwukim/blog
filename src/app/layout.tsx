@@ -1,10 +1,24 @@
-import "./globals.css";
+import "@/styles/globals.css";
 
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 
-import { Analytics, Layout, Providers } from "@/components";
-import { SITE_CONFIG } from "@/constants";
+import cn from "@/lib/cn";
+
+import Analytics from "@/components/analytics";
+import Providers from "@/components/providers";
+import Series from "@/components/series/series";
+import {
+  GlobalFooter,
+  GlobalHeader,
+  PageLayout,
+  PageLayoutSidebar,
+  SIDEBAR_TOP,
+} from "@/components/ui/layout";
+
+import SITE_CONFIG from "@/constants/site-config";
+
+import type { PropsWithChidren } from "@/types";
 
 const font = Noto_Sans_KR({
   weight: ["400", "500", "700", "800"],
@@ -26,7 +40,7 @@ const font = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${SITE_CONFIG.author.name} blog`,
+    template: `%s | ${SITE_CONFIG.author.name} 블로그`,
     default: SITE_CONFIG.title,
   },
   description: SITE_CONFIG.description,
@@ -48,18 +62,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: PropsWithChidren) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body className={`${font.className} antialiased`}>
-        <Providers>
-          <Layout>{children}</Layout>
-        </Providers>
+      <body
+        className={`${font.className} relative flex min-h-svh w-full flex-col overflow-x-hidden antialiased`}
+      >
         <Analytics />
+        <Providers>
+          <div className="container mx-auto flex flex-1 flex-col">
+            <GlobalHeader />
+            <PageLayout>
+              <PageLayoutSidebar>
+                <Series className={cn("sticky", SIDEBAR_TOP)} />
+              </PageLayoutSidebar>
+
+              {/* main content + sidebar*/}
+              {children}
+            </PageLayout>
+            <GlobalFooter />
+          </div>
+        </Providers>
       </body>
     </html>
   );

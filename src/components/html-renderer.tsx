@@ -1,24 +1,23 @@
-import clsx from "clsx";
-
 import "@/styles/prism-vsc-dark-plus.css";
 import "@/styles/prism-plugin.css";
 
-/* eslint-disable import/no-unresolved */
 import "prismjs/plugins/toolbar/prism-toolbar.min.css";
 import "prismjs/plugins/toolbar/prism-toolbar.min";
 import "prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min";
 import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
-export interface HtmlRendererProps {
+import cn from "@/lib/cn";
+
+interface HtmlRendererProps {
   html: string;
   className?: string;
 }
 
-export function HtmlRenderer({ html, className = "" }: HtmlRendererProps) {
+export default function HtmlRenderer({ html, className = "" }: HtmlRendererProps) {
   return (
     <div
       dangerouslySetInnerHTML={{ __html: html }}
-      className={clsx("prose max-w-none dark:prose-invert", className)}
+      className={cn("prose dark:prose-invert", className)}
     />
   );
 }
