@@ -1,7 +1,8 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
-import { SITE_CONFIG } from "@/constants";
-import { getAllPosts, getAllPostSlugs, getAllTags } from "@/libs";
+import { getAllPosts, getAllSeries } from "@/lib/posts/v2";
+
+import SITE_CONFIG from "@/constants/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
@@ -14,46 +15,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
     },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+    // TODO: about
+    // {
+    //   url: `${baseUrl}/about`,
+    //   lastModified: new Date(),
+    //   changeFrequency: "monthly",
+    //   priority: 0.8,
+    // },
   );
 
-  // 모든 글 경로 추가
-  const postSlugs = getAllPostSlugs();
-  postSlugs.forEach((slug) => {
-    const [year, ...slugParts] = slug.split("/");
-    const postUrl = `${baseUrl}/posts/${year}/${slugParts.join("/")}`;
+  getAllSeries().forEach((series) => {
     urls.push({
-      url: postUrl,
+      url: `${baseUrl}/${encodeURIComponent(series)}`,
       lastModified: new Date(),
       changeFrequency: "weekly",
-      priority: 0.9,
+      priority: 0.8,
     });
   });
 
-  // 모든 태그별 페이지 경로 추가
-  const allTags = getAllTags();
-  const allPosts = getAllPosts();
-
-  allTags.forEach((tag) => {
-    const encodedTag = encodeURIComponent(tag);
-
-    const totalPostsByTag = allPosts.filter((post) => post.frontMatter.tags.includes(tag)).length;
-
-    const totalPages = Math.ceil(totalPostsByTag / SITE_CONFIG.limitPerPage);
-
-    for (let page = 1; page <= totalPages; page++) {
-      urls.push({
-        url: `${baseUrl}/tags/${encodedTag}/${page}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.7,
-      });
-    }
+  getAllPosts().forEach((post) => {
+    urls.push({
+      url: `${baseUrl}/${encodeURIComponent(post.series)}/${encodeURIComponent(post.slug)}`,
+      lastModified: new Date(post.frontMatter.publishedAt),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
   });
 
   return urls;

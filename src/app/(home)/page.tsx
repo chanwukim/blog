@@ -1,20 +1,15 @@
-import { Pagination, Posts, Tags } from "@/components";
-import { SITE_CONFIG } from "@/constants";
-import { getAllTags, getPaginatedPosts, getPostCount } from "@/libs";
+import { getAllPosts } from "@/lib/posts/v2";
 
-const PAGE = 1;
+import Posts from "@/components/post/posts";
+import MobileSeries from "@/components/series/mobile-series";
+import { PageLayoutContent } from "@/components/ui/layout";
 
 export default function HomePage() {
-  const posts = getPaginatedPosts(PAGE, SITE_CONFIG.limitPerPage);
-  const allTags = getAllTags();
-  const totalPosts = getPostCount();
-  const totalPages = Math.ceil(totalPosts / SITE_CONFIG.limitPerPage);
-
+  const posts = getAllPosts();
   return (
-    <div className="flex flex-col">
-      <Posts list={posts} />
-      <Pagination currentPage={PAGE} totalPages={totalPages} basePath="" />
-      <Tags tags={allTags} />
-    </div>
+    <PageLayoutContent>
+      <MobileSeries />
+      <Posts posts={posts} />
+    </PageLayoutContent>
   );
 }
