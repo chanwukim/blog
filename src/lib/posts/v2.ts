@@ -9,12 +9,17 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 
 export function getAllPosts(): Post[] {
   const series = getAllSeries();
-  return series.flatMap((seriesName) => {
+  const posts = series.flatMap((seriesName) => {
     return getPostsBySeries(seriesName).map((post) => ({
       ...post,
       series: seriesName,
     }));
   });
+
+  return posts.sort(
+    (a, b) =>
+      new Date(b.frontMatter.publishedAt).getTime() - new Date(a.frontMatter.publishedAt).getTime(),
+  );
 }
 
 /**
@@ -40,20 +45,26 @@ export function getPostsBySeries(series: string): Post[] {
 
   const fileNames = fs.readdirSync(seriesDirectory);
 
-  return fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, "");
-    const fullPath = path.join(seriesDirectory, fileName);
+  return fileNames
+    .map((fileName) => {
+      const slug = fileName.replace(/\.md$/, "");
+      const fullPath = path.join(seriesDirectory, fileName);
 
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
 
-    return {
-      slug,
-      series,
-      content,
-      frontMatter: data as FrontMatter,
-    };
-  });
+      return {
+        slug,
+        series,
+        content,
+        frontMatter: data as FrontMatter,
+      };
+    })
+    .sort(
+      (a, b) =>
+        new Date(b.frontMatter.publishedAt).getTime() -
+        new Date(a.frontMatter.publishedAt).getTime(),
+    );
 }
 
 export function getPostBySeriesAndSlug(series: string, slug: string): Post {
