@@ -1,20 +1,19 @@
 import type { ExtendTheme } from "@pigment-css/react/theme";
 
-interface Theme {
-  colors: {
-    foreground: string;
-    foregroundMuted: string;
-    background: string;
-    backgroundMuted: string;
+type Theme = ExtendTheme<{
+  tokens: {
+    colors: {
+      foreground: string;
+      foregroundMuted: string;
+      background: string;
+      backgroundMuted: string;
+    };
   };
-}
+}>;
 
 declare module "@pigment-css/react/theme" {
   interface ThemeArgs {
-    theme: ExtendTheme<{
-      colorScheme: "light" | "dark";
-      tokens: Theme;
-    }>;
+    theme: Theme;
   }
 }
 

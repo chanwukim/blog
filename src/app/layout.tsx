@@ -68,5 +68,4 @@ const root = css`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: ${({ theme }) => theme.vars.colors.background};
-  color: ${({ theme }) => theme.vars.colors.foreground};
 `;
