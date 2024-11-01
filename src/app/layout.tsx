@@ -1,24 +1,12 @@
-import "@/styles/globals.css";
+import "@/styles/globals";
 
 import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 
-import cn from "@/lib/cn";
+import { css } from "@pigment-css/react";
 
-import Analytics from "@/components/analytics";
-import Providers from "@/components/providers";
-import Series from "@/components/series/series";
-import {
-  GlobalFooter,
-  GlobalHeader,
-  PageLayout,
-  PageLayoutSidebar,
-  SIDEBAR_TOP,
-} from "@/components/ui/layout";
-
-import SITE_CONFIG from "@/constants/site-config";
-
-import type { PropsWithChidren } from "@/types";
+import { SITE_CONFIG } from "@/lib/constants";
+import type { PropsWithChildren } from "@/lib/types";
 
 const font = Noto_Sans_KR({
   weight: ["400", "500", "700", "800"],
@@ -40,7 +28,7 @@ const font = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${SITE_CONFIG.author.name} 블로그`,
+    template: `%s | ${SITE_CONFIG.author.name}`,
     default: SITE_CONFIG.title,
   },
   description: SITE_CONFIG.description,
@@ -62,28 +50,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: PropsWithChidren) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body
-        className={`${font.className} relative flex min-h-svh w-full flex-col overflow-x-hidden antialiased`}
-      >
-        <Analytics />
-        <Providers>
-          <div className="container mx-auto flex flex-1 flex-col">
-            <GlobalHeader />
-            <PageLayout>
-              <PageLayoutSidebar>
-                <Series className={cn("sticky", SIDEBAR_TOP)} />
-              </PageLayoutSidebar>
-
-              {/* main content + sidebar*/}
-              {children}
-            </PageLayout>
-            <GlobalFooter />
-          </div>
-        </Providers>
-      </body>
+    <html lang="ko">
+      <body className={`${root} ${font.className}`}>{children}</body>
     </html>
   );
 }
+
+const root = css`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: ${({ theme }) => theme.vars.background};
+  color: ${({ theme }) => theme.vars.foreground};
+`;

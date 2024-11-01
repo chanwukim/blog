@@ -9,6 +9,7 @@ module.exports = {
     eqeqeq: ["error", "always", { null: "ignore" }], // 동등 비교(===, !==)를 사용. null 제외
     "@typescript-eslint/consistent-type-imports": "error", // import type을 사용하도록 강제
     "@typescript-eslint/no-empty-object-type": "warn",
+    "@typescript-eslint/no-unused-vars": "warn",
     "import/order": [
       "error",
       {
@@ -17,7 +18,15 @@ module.exports = {
           order: "asc", // import를 알파벳 오름차순으로 정렬
           caseInsensitive: true, // 정렬 시 대소문자 구분 안 함
         },
-        groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object"],
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+        ],
         pathGroups: [
           {
             pattern: "{next,next/**,react,react-dom}", // framework 처리
