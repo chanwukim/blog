@@ -67,6 +67,6 @@ const root = css`
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: ${({ theme }) => theme.vars.background};
-  color: ${({ theme }) => theme.vars.foreground};
+  background-color: ${({ theme }) => theme.vars.colors.background};
+  color: ${({ theme }) => theme.vars.colors.foreground};
 `;

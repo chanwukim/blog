@@ -1,3 +1,7 @@
 export default function Home() {
-  return <main sx={(theme) => ({ color: theme.foreground })}>Hello World</main>;
+  return (
+    <main sx={(theme) => ({ color: theme.colors.foregroundMuted })}>
+      Hello World
+    </main>
+  );
 }

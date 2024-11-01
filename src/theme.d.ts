@@ -1,10 +1,12 @@
 import type { ExtendTheme } from "@pigment-css/react/theme";
 
 interface Theme {
-  foreground: string;
-  foregroundMuted: string;
-  background: string;
-  backgroundMuted: string;
+  colors: {
+    foreground: string;
+    foregroundMuted: string;
+    background: string;
+    backgroundMuted: string;
+  };
 }
 
 declare module "@pigment-css/react/theme" {
