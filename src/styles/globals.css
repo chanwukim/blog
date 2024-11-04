@@ -1,30 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "./reset.css";
 
-@layer base {
-  /* https://www.figma.com/ko-kr/colors/jet-black/ */
-  :root {
-    --background: 0 0% 99%;
-    --background-muted: 0 0% 97%;
-    --foreground: 0 0% 14.5%;
-    --foreground-muted: 0 0% 14.5%;
-    --border: 0 0% 0%;
+:root {
+  --max-width: 80rem;
+
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+
+  /* https://github.com/yeun/open-color/blob/master/open-color.css */
+  --white: 0 0% 100%;
+  --black: 0 0% 0%;
+
+  --foreground: 210 10% 23%;
+  --foreground-muted: 210 7% 56%;
+  --foreground-disabled: 210 11% 71%;
+  --background: var(--white);
+  --background-card: 210 17% 95%;
+  --border: 210 14% 89%;
+
+  --tag-background: 210 10% 23%;
+
+  --button-background: 210 10% 20%;
+  --button-foreground: 0 0% 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  background-color: hsl(var(--background) / 1);
+  color: hsl(var(--foreground) / 1);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  height: 2.25rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  background-color: hsl(var(--button-background) / 1);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  color: hsl(var(--button-foreground) / 1);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition:
+    color 0.13s ease-in-out,
+    background-color 0.13s ease-in-out;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 0.9;
   }
 
-  .dark {
-    --background: 0 0% 11.5%;
-    --background-muted: 0 0% 17.5%;
-    --foreground: 0 0% 100%;
-    --foreground-muted: 0 0% 100%;
-    --border: 0 0% 100%;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }

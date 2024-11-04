@@ -1,15 +1,26 @@
-import { getAllPosts } from "@/lib/posts/v2";
+import { getAllCategories, getAllPosts, getAllTags } from "@/lib/post";
 
-import Posts from "@/components/post/posts";
-import MobileSeries from "@/components/series/mobile-series";
-import { PageLayoutContent } from "@/components/ui/layout";
+import CategoryList from "@/components/category-list";
+import * as Layout from "@/components/layout";
+import PostList from "@/components/post-list";
+import TagList from "@/components/tag-list";
 
-export default function HomePage() {
-  const posts = getAllPosts();
+export default async function HomePage() {
+  const posts = await getAllPosts();
+  const tags = await getAllTags();
+  const categories = await getAllCategories();
+
   return (
-    <PageLayoutContent>
-      <MobileSeries />
-      <Posts posts={posts} />
-    </PageLayoutContent>
+    <>
+      <Layout.Root>
+        <Layout.Side>
+          <CategoryList categories={categories} currentCategory="전체글" />
+          <TagList tags={tags} />
+        </Layout.Side>
+        <Layout.Main>
+          <PostList posts={posts} />
+        </Layout.Main>
+      </Layout.Root>
+    </>
   );
 }

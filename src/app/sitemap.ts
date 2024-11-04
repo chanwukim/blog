@@ -1,45 +1,18 @@
-import type { MetadataRoute } from "next";
+import { SITE_CONFIG } from "@/lib/constants";
+import { getAllPosts } from "@/lib/post";
 
-import { getAllPosts, getAllSeries } from "@/lib/posts/v2";
+export default async function sitemap() {
+  const posts = await getAllPosts();
 
-import SITE_CONFIG from "@/constants/site-config";
+  const blogs = posts.map((post) => ({
+    url: `${SITE_CONFIG.url}/post/${post.slug}`,
+    lastModified: post.publishedAt,
+  }));
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = SITE_CONFIG.url;
-  const urls: MetadataRoute.Sitemap = [];
+  const routes = ["", "/post"].map((route) => ({
+    url: `${SITE_CONFIG.url}${route}`,
+    lastModified: new Date().toISOString().split("T")[0],
+  }));
 
-  urls.push(
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/me`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-  );
-
-  getAllSeries().forEach((series) => {
-    urls.push({
-      url: `${baseUrl}/${encodeURIComponent(series)}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    });
-  });
-
-  getAllPosts().forEach((post) => {
-    urls.push({
-      url: `${baseUrl}/${encodeURIComponent(post.series)}/${encodeURIComponent(post.slug)}`,
-      lastModified: new Date(post.frontMatter.publishedAt),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    });
-  });
-
-  return urls;
+  return [...routes, ...blogs];
 }

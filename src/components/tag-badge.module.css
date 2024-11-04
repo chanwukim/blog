@@ -1,0 +1,11 @@
+.tag {
+  padding: 0.125rem 0.5rem;
+  background-color: hsl(var(--tag-background) / 0.05);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  opacity: 0.85;
+
+  &:hover {
+    opacity: 1;
+  }
+}

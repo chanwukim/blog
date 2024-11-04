@@ -1,13 +1,11 @@
-import type { MetadataRoute } from "next";
-
-import SITE_CONFIG from "@/constants/site-config";
-
-export default function robots(): MetadataRoute.Robots {
+export default function robots() {
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-    },
-    sitemap: `${SITE_CONFIG.url}/sitemap.xml`,
+    rules: [
+      {
+        userAgent: "*",
+      },
+    ],
+    sitemap: "https://chanwu.dev/sitemap.xml",
+    host: "https://chanwu.dev",
   };
 }

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
-import SITE_CONFIG from "@/constants/site-config";
+import { SITE_CONFIG } from "@/lib/constants";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
