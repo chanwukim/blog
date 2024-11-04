@@ -17,19 +17,18 @@ export async function generateStaticParams() {
   const posts = await getAllPosts();
 
   return posts.map((post) => ({
-    year: post.publishedAt.split("-")[0],
-    slug: post.slug,
+    year: post.slug.split("/")[0],
+    slug: post.slug.split("/")[1],
   }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { year: string; slug: string };
+  params: Promise<{ year: string; slug: string }>;
 }) {
-  const year = decodeURIComponent(params.year);
-  const slug = decodeURIComponent(params.slug);
-  const post = await getPostBySlug(slug);
+  const { year, slug } = await params;
+  const post = await getPostBySlug(`${year}/${slug}`);
 
   if (!post) {
     return {
@@ -73,7 +72,6 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
   const { year, slug } = await params;
-
   const tags = await getAllTags();
   const categories = await getAllCategories();
   const post = await getPostBySlug(`${year}/${slug}`);

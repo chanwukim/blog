@@ -15,9 +15,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }) {
-  const category = decodeURIComponent(params.category);
+  const category = decodeURIComponent((await params).category);
   const posts = await getPostsByCategory(category);
 
   if (posts.length === 0) {
