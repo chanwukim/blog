@@ -31,7 +31,7 @@ export default function PostListItem({ post }: PostListItemProps) {
       {tags.length > 0 && (
         <div className={styles.tags}>
           {tags.map((tag) => (
-            <Link href={`/tag/${tag}`} key={tag}>
+            <Link href={`/tag/${encodeURIComponent(tag)}`} key={tag}>
               <TagBadge tag={tag} />
             </Link>
           ))}

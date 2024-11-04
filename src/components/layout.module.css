@@ -102,8 +102,6 @@
     padding: 0.5rem;
     font-size: var(--font-size-sm);
     transition: color 0.2s ease-in-out;
-    &:hover {
-      color: hsl(var(--foreground) / 1);
-    }
+    color: hsl(var(--foreground) / 1);
   }
 }
