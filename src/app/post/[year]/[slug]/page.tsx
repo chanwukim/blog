@@ -41,10 +41,10 @@ export async function generateMetadata({
 
   return {
     title,
-    description,
+    description: description ?? SITE_CONFIG.description,
     openGraph: {
       title,
-      description,
+      description: description ?? SITE_CONFIG.description,
       type: "article",
       publishedTime: publishedAt,
       url: `${SITE_CONFIG.url}/post/${year}/${slug}`,
