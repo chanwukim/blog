@@ -8,3 +8,4 @@ storybook-static
 *.log
 playwright-report
 docs
+*.md
