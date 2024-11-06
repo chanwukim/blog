@@ -21,7 +21,7 @@
   }
 
   & h4 {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     margin-bottom: 0.25rem;
     font-weight: 700;
   }
@@ -79,6 +79,10 @@
       margin-right: 0.5rem;
       position: absolute;
       margin-left: -1rem;
+    }
+
+    & ul {
+      margin-top: 0.25rem;
     }
   }
 
