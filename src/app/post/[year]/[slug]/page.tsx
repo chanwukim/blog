@@ -12,6 +12,7 @@ import CategoryList from "@/components/category-list";
 import * as Layout from "@/components/layout";
 import PostDetail from "@/components/post-detail";
 import TagList from "@/components/tag-list";
+import Toc from "@/components/toc";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -89,6 +90,9 @@ export default async function PostPage({ params }: PostPageProps) {
       <Layout.Main>
         <PostDetail post={post} />
       </Layout.Main>
+      <Layout.Side>
+        <Toc />
+      </Layout.Side>
     </Layout.Root>
   );
 }

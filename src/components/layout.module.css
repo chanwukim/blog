@@ -70,7 +70,7 @@
 @media (min-width: 768px) {
   .content {
     display: grid;
-    grid-template-columns: 1fr minmax(auto, 55%) 1fr;
+    grid-template-columns: 1fr minmax(auto, 60%) 1fr;
     padding-inline: 1rem;
   }
 }
