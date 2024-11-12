@@ -28,7 +28,7 @@ export default async function markdownToHtml(markdown: string) {
       root.children.forEach((node: any) => {
         if (node.type === "element" && node.tagName.match(/^h[1-3]$/)) {
           const level = parseInt(node.tagName[1]);
-          node.tagName = `h${level + 1}`;
+          node.tagName = `h${level + 2}`;
         }
       });
     })
