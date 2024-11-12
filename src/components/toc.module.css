@@ -5,7 +5,7 @@
   padding-left: 0.5rem;
   border-left: 1px solid hsl(var(--border) / 1);
 
-  li {
+  & li {
     margin-left: 0;
     font-size: var(--font-size-sm);
     transform: scale(0.95);
@@ -21,7 +21,7 @@
     }
   }
 
-  li:hover {
+  & li:hover {
     text-decoration: underline;
   }
 }
