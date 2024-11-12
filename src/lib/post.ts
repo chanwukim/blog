@@ -30,6 +30,9 @@ export async function getAllPosts(): Promise<Post[]> {
 
   for (const year of years) {
     const yearPath = path.join(postsDirectory, year);
+    if (yearPath.split("/").at(-1) === ".DS_Store") {
+      continue;
+    }
     const files = await fs.promises.readdir(yearPath);
 
     for (const file of files) {
@@ -73,5 +76,11 @@ export async function getPostsByCategory(category: string) {
 export async function getPostBySlug(slug: string) {
   const [year, ...slugParts] = slug.split("/");
   const fileName = `${slugParts.join("/")}.md`;
-  return await readPost(year, fileName);
+  const post = await readPost(year, fileName);
+
+  if (post && post.isPublished) {
+    return post;
+  }
+
+  return null;
 }
