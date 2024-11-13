@@ -1,7 +1,7 @@
 ---
 title: "크롬 브라우저에서 드래그시 border-radius가 적용되지 않는 문제"
 category: "CSS"
-tags: ["CSS"]
+tags: ["CSS", "FE"]
 publishedAt: "2023-12-24"
 isPublished: true
 ---

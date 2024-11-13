@@ -2,7 +2,7 @@
 title: "리액트 React Event Object와 합성 이벤트"
 category: "React"
 description: "React 이벤트 객체와 합성 이벤트에 대해 정리"
-tags: ["React", "DOM"]
+tags: ["React", "DOM", "FE"]
 publishedAt: "2024-06-28"
 isPublished: true
 ---
