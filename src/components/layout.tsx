@@ -15,7 +15,7 @@ export function Root({ children }: PropsWithChildren) {
       <header className={styles.header}>
         <div>
           <Link href="/" className={styles.logo}>
-            {SITE_CONFIG.title}
+            기록이 쌓이면 <span>뭐든</span> 된다
           </Link>
         </div>
         <div className={styles.actions}></div>

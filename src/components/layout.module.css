@@ -24,8 +24,20 @@
   z-index: 10;
 
   .logo {
-    font-weight: 500;
+    margin-left: -0.5rem;
     padding: 0.5rem;
+    font-weight: 300;
+    font-size: var(--font-size-sm);
+
+    & span {
+      color: #165e25;
+      font-weight: 500;
+    }
+  }
+  @media (min-width: 768px) {
+    .logo {
+      font-size: var(--font-size-md);
+    }
   }
 
   & .actions {
@@ -39,7 +51,7 @@
 
 .content {
   flex: 1;
-  gap: 2rem;
+  gap: 1rem;
 
   .side {
     display: none;
