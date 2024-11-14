@@ -9,6 +9,11 @@ const postsDirectory = path.join(process.cwd(), "content/posts");
 
 async function readPost(year: string, fileName: string): Promise<Post | null> {
   const fullPath = path.join(postsDirectory, year, fileName);
+
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
   const fileContents = await fs.promises.readFile(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
