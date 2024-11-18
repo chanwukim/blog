@@ -17,7 +17,7 @@
   }
 
   .description {
-    margin-top: 0.875rem;
+    margin-top: 0.5rem;
     font-size: var(--font-size-sm);
     color: hsl(var(--foreground-muted) / 1);
   }

@@ -3,7 +3,7 @@ title: "React 공식문서 - 학습하기"
 category: "React 공식문서"
 tags: ["React", "FE"]
 publishedAt: "2024-11-14"
-isPublished: true
+isPublished: false
 ---
 
 <img alt="썸네일" src="/react-doc/thumbnail.png" width="100%" style="margin: 1.5rem auto;"/>
@@ -245,3 +245,28 @@ export default function App() {
 ```
 
 <img width="80%" style="margin: 0 auto" src="https://ko.react.dev/_next/image?url=%2Fimages%2Fdocs%2Fdiagrams%2Frender_tree.png&w=1080&q=75" >
+
+# [상호작용성 더하기 🚧](https://ko.react.dev/learn/adding-interactivity)
+
+
+## State 🔥
+
+## [렌더링 그리고 커밋](https://ko.react.dev/learn/render-and-commit)
+
+
+# Hook 🔥
+
+
+
+Hooks는 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수다.
+🔥
+
+
+# 탈출구
+
+React의 “외부”로 나가서 외부 시스템에 연결할 수 있는 탈출구를 알아보자.
+
+## Ref
+컴포넌트가 데이터를 기억하고 싶지만, 렌더링을 유발하지 않도록 하려면 `ref`를 사용한다.
+
+## Effect 
