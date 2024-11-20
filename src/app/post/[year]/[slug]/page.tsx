@@ -38,7 +38,6 @@ export async function generateMetadata({
   }
 
   const { title, description, publishedAt } = post;
-  const ogImage = `${SITE_CONFIG.url}/og?title=${title}`;
 
   return {
     title,
@@ -49,17 +48,11 @@ export async function generateMetadata({
       type: "article",
       publishedTime: publishedAt,
       url: `${SITE_CONFIG.url}/post/${year}/${slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
     },
   };
 }
