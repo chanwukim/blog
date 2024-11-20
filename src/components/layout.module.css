@@ -34,7 +34,7 @@
       font-weight: 500;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .logo {
       font-size: var(--font-size-md);
     }
@@ -67,7 +67,7 @@
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .side {
       display: block;
     }
@@ -79,7 +79,7 @@
     flex: 1;
   }
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .content {
     display: grid;
     grid-template-columns: 1fr minmax(auto, 60%) 1fr;
