@@ -3,6 +3,7 @@ import type { IconProps } from "@/lib/types";
 export default function GithubIcon({ size = 24, ...rest }: IconProps) {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       aria-hidden
       height={size}
       width={size}
