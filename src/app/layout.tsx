@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     default: SITE_CONFIG.title,
   },
   description: SITE_CONFIG.description,
+  verification: {
+    google: "4oQP_trevE42WBKpMlDz8vUk9MCv5ZmlXECFFyGNv8w",
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
