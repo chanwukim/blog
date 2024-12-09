@@ -4,7 +4,7 @@ category: "detalk"
 tags:
   - detalk
 publishedAt: "2024-12-01"
-isPublished: true
+isPublished: false
 ---
 
 > 11/28 ~ 11/30
