@@ -1,9 +1,11 @@
 ---
 title: "You Don’t Know JS Yet - 자바스크립트 개념, 스코프와 클로저"
 category: "책"
-tags: ["책", "JavaScript"]
+tags:
+  - 책읽기
+  - JavaScript
 publishedAt: "2024-11-05"
-isPublished: true
+isPublished: false
 ---
 
 <img src="/you-dont-know-js-yet/01.jpg" alt="표지" style="margin-left: auto; margin-right: auto; max-height: 256px"/>
@@ -40,7 +42,7 @@ isPublished: true
 >     - JS에서 파싱이 끝난 코드는 컴파일러를 거쳐 최적화된 이진 코드로 변환되어 실행 됨.
 >     - 또 JS 엔진은 파싱 이후 생성된 코드를 다양한 방법으로 실행 전에 그때그때 JIT 처리 및 최적화함.
 > 3. 단계 정리
-> ```
+> ```bash
 > JS엔진이 전달 받은 코드를 파싱해 AST를 생성
 > |
 > 엔진은 AST를 이진 바이트 코드로 변환 + JIT 최적화 함께 진행 

@@ -1,0 +1,14 @@
+.tag {
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    color: var(--foreground-on-primary);
+    background-color: var(--foreground);
+  }
+
+  & .hashtag {
+    margin-right: 1px;
+  }
+}

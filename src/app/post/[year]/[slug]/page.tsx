@@ -1,18 +1,16 @@
 import { notFound } from "next/navigation";
 
 import { SITE_CONFIG } from "@/lib/constants";
-import {
-  getAllCategories,
-  getAllPosts,
-  getAllTags,
-  getPostBySlug,
-} from "@/lib/post";
+import { getAllPosts, getPostBySlug } from "@/lib/post";
 
-import CategoryList from "@/components/category-list";
-import * as Layout from "@/components/layout";
-import PostDetail from "@/components/post-detail";
-import TagList from "@/components/tag-list";
-import Toc from "@/components/toc";
+import Article from "@/components/blog/article";
+import ArticleToc from "@/components/blog/article-toc";
+import {
+  AppHeader,
+  AppPageLayout,
+  AppPageLayoutContent,
+  AppPageLayoutSidebar,
+} from "@/components/layout/app-layout";
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -66,8 +64,6 @@ interface PostPageProps {
 
 export default async function PostPage({ params }: PostPageProps) {
   const { year, slug } = await params;
-  const tags = await getAllTags();
-  const categories = await getAllCategories();
   const post = await getPostBySlug(`${year}/${slug}`);
 
   if (!post) {
@@ -75,17 +71,16 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   return (
-    <Layout.Root>
-      <Layout.Side>
-        <CategoryList categories={categories} currentCategory="All" />
-        <TagList tags={tags} />
-      </Layout.Side>
-      <Layout.Main>
-        <PostDetail post={post} />
-      </Layout.Main>
-      <Layout.Side>
-        <Toc />
-      </Layout.Side>
-    </Layout.Root>
+    <>
+      <AppHeader />
+      <AppPageLayout>
+        <AppPageLayoutContent>
+          <Article post={post} />
+        </AppPageLayoutContent>
+        <AppPageLayoutSidebar>
+          <ArticleToc />
+        </AppPageLayoutSidebar>
+      </AppPageLayout>
+    </>
   );
 }

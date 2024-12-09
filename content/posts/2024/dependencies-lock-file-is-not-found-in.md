@@ -2,7 +2,9 @@
 title: "GitHub Actions: Dependencies lock file is not found in"
 category: "CI/CD"
 description: "GitHub Actions에서 npm dependencies 캐싱 과정에서 발생한 이슈"
-tags: ["git-actions", "ci/cd"]
+tags:
+  - git-actions
+  - ci/cd
 publishedAt: "2024-06-05"
 isPublished: true
 ---

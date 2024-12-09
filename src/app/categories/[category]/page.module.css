@@ -1,0 +1,17 @@
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+
+  & .category {
+    color: var(--foreground-muted);
+  }
+
+  & .postCount {
+    margin-left: 0.25rem;
+    color: var(--primary);
+  }
+}

@@ -1,0 +1,30 @@
+.article {
+  position: relative;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+
+  & .title {
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    white-space: normal;
+  }
+
+  & .description {
+    margin-top: 0.25rem;
+  }
+
+  & .meta {
+    margin-top: 0.75rem;
+  }
+
+  & .tags {
+    position: relative;
+    margin-top: 0.5rem;
+  }
+
+  & .link {
+    position: absolute;
+    display: block;
+    inset: 0;
+  }
+}

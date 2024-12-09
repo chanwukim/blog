@@ -1,0 +1,26 @@
+@layer components {
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .variant-default {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+  .variant-light {
+    background-color: #0000000d;
+  }
+  .variant-outline {
+    background-color: transparent;
+    border-color: var(--border);
+  }
+}

@@ -1,0 +1,12 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 4rem;
+}
+
+.actions {
+  margin-top: 1rem;
+}

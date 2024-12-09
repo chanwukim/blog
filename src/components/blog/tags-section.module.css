@@ -1,0 +1,17 @@
+.section {
+  margin-block: 1rem;
+  padding: 1rem;
+  overflow: hidden;
+
+  & .tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
+    }
+  }
+}

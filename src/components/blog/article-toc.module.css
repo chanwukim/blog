@@ -1,0 +1,38 @@
+.toc {
+  display: none;
+  position: fixed;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+
+  & .list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--border);
+    color: var(--foreground-muted);
+
+    & li {
+      margin-left: 0;
+      font-size: 0.875rem;
+      transform: scale(0.95);
+      transition: transform 0.2s ease-in-out;
+
+      &.h3 {
+        margin-left: 1rem;
+      }
+
+      &.active {
+        transform: scale(1);
+        font-weight: 600;
+        color: var(--foreground);
+      }
+    }
+
+    & li:hover {
+      text-decoration: underline;
+    }
+  }
+}

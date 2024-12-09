@@ -1,0 +1,48 @@
+@layer components {
+  .tabNavWrapper {
+    overflow: hidden;
+  }
+
+  .tabNav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-bottom: 1px solid var(--border);
+      content: "";
+    }
+  }
+
+  .tabNavItem {
+    & a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 6rem;
+      padding: 0.5rem 1rem;
+      color: var(--foreground-muted);
+      white-space: nowrap;
+      transition:
+        background-color 0.15s ease-in-out,
+        color 0.15s ease-in-out;
+
+      &:hover {
+        background-color: rgba(var(--black-rgb), 0.05);
+        color: var(--foreground);
+      }
+    }
+
+    &.active a {
+      border-bottom: 3px solid var(--primary);
+      color: var(--foreground);
+    }
+  }
+}

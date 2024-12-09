@@ -26,9 +26,9 @@ export default async function markdownToHtml(markdown: string) {
     .use(rehypeRaw) // HTML을 허용하기 위해 추가
     .use(() => (root: any) => {
       root.children.forEach((node: any) => {
-        if (node.type === "element" && node.tagName.match(/^h[1-3]$/)) {
+        if (node.type === "element" && node.tagName.match(/^h[1-5]$/)) {
           const level = parseInt(node.tagName[1]);
-          node.tagName = `h${level + 2}`;
+          node.tagName = `h${level + 1}`;
         }
       });
     })

@@ -1,17 +1,16 @@
 import "@/styles/globals.css";
 
 import type { Metadata } from "next";
-import { Noto_Sans_KR } from "next/font/google";
+import localFont from "next/font/local";
 
 import { SITE_CONFIG } from "@/lib/constants";
 import type { PropsWithChildren } from "@/lib/types";
 
-import Analytics from "@/components/analytics";
+import Analytics from "@/components/utils/analytics";
 
-const notoSansKR = Noto_Sans_KR({
-  weight: ["400", "500", "700", "800"],
+const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
   display: "swap",
-  subsets: ["latin"],
   fallback: [
     "-apple-system",
     "BlinkMacSystemFont",
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ko">
-      <body className={notoSansKR.className}>
+      <body className={pretendard.className}>
         {children}
         <Analytics />
       </body>

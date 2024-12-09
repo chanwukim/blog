@@ -1,7 +1,8 @@
 ---
 title: "TypeScript에서 enum 대신 const 사용하기"
 category: "TypeScript"
-tags: ["TypeScript"]
+tags:
+  - TypeScript
 publishedAt: "2024-09-18"
 isPublished: true
 ---

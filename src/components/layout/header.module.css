@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 1;
+  z-index: 100;
+  transition:
+    top 0.3s,
+    opacity 0.3s;
+
+  &[data-hidden="true"] {
+    opacity: 0;
+    top: -4rem;
+  }
+
+  & .inner {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    padding-inline: 1rem;
+    width: 100%;
+    max-width: var(--max-width);
+    height: 4rem;
+    background-color: var(--background);
+
+    & .action {
+      margin-left: auto;
+    }
+  }
+}

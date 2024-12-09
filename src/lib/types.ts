@@ -14,7 +14,6 @@ export type PropsWithChildren<P = unknown> = Readonly<
 export interface IconProps extends SVGProps<SVGSVGElement> {
   children?: never;
   size?: number;
-  className?: string;
 }
 
 export interface Post {
@@ -27,3 +26,16 @@ export interface Post {
   isPublished: boolean;
   content: string;
 }
+
+interface AsProps<C extends React.ElementType> extends PropsWithChildren {
+  as?: C;
+}
+
+type PropsToOmit<C extends React.ElementType, P> = keyof (AsProps<C> & P);
+
+export type PolymorphicComponentProps<
+  C extends React.ElementType,
+  Props = {},
+> = AsProps<C> &
+  Props &
+  Omit<React.ComponentPropsWithRef<C>, PropsToOmit<C, Props>>;

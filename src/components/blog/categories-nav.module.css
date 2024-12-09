@@ -1,0 +1,15 @@
+.nav {
+  padding: 1rem;
+
+  & .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+
+    .category {
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+}

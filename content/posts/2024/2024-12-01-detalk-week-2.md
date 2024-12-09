@@ -1,7 +1,8 @@
 ---
 title: "Detalk 개발 일지 - 2주차"
 category: "detalk"
-tags: ["detalk"]
+tags:
+  - detalk
 publishedAt: "2024-12-01"
 isPublished: true
 ---
