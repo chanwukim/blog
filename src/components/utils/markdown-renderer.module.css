@@ -10,8 +10,8 @@
   }
 
   & a {
-    color: #1a73e8;
-    border-bottom: 1px solid hsl(209 77% 43%);
+    color: #1d4ed8;
+    border-bottom: 1px solid #1d4ed8;
   }
 
   & a:not([href]) {
