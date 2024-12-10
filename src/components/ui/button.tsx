@@ -13,7 +13,7 @@ export type ButtonProps<C extends React.ElementType> =
     }
   >;
 
-export function Button<C extends React.ElementType = "span">({
+export function Button<C extends React.ElementType = "button">({
   as,
   variant = "default",
   size = "md",
