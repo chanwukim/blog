@@ -8,10 +8,9 @@ publishedAt: "2024-11-14"
 isPublished: false
 ---
 
-<img alt="썸네일" src="/react-doc/thumbnail.png" width="100%" style="margin: 1.5rem auto;"/>
+<img alt="썸네일" src="/react-doc/thumbnail.png" style="margin: 1.5rem auto;"/>
 
-> 1. React 공식문서를 정주행하여 리액트 기본기를 다져보자. 
-> 2. 필요할때 정리한 이 글에서 빠르게 찾아보자.
+React 공식문서 정주행
 
 
 # [React로 사고하기](https://ko.react.dev/learn/thinking-in-react) 🔥
@@ -414,13 +413,13 @@ function Component() {
     ```
 
 2. state set 함수 사용
-
-공식문서에서는 이를 각각 손님이 식당에서와서 첫 주문을 하는 것과 식사 중 추가 주문을 하는것으로 비유 함
+    - `set 함수`를 통해 추가적인 렌더링을 트리거 할 수 있다. 렌더링 작업은 렌더링 대기열에 추가한다.
+    - 공식문서에서는 이를 각각 손님이 식당에서와서 첫 주문을 하는 것(초기 렌더링)과 식사 중 추가 주문(state set)을 하는것으로 비유 함
 
 ### 2. 렌더링
 "렌더링"은 React에서 컴포넌트를 호출하는 것이다.
 - 초기 렌더링에선 React는 루트 컴포넌트를 호출
-- 이후 state 업데이트가 일어나 렌더링 트리거한 컴포넌트를 호출
+- 이후 state 업데이트가 일어나 렌더링을 트리거한 컴포넌트를 호출
 
 컴포넌트가 다른 컴포넌트를 반환하면 React는 다음으로 해당 컴포넌트를 렌더링(호출)한다.
 
@@ -432,11 +431,11 @@ function Component() {
 > **React는 렌더링 간에 차이가 있는 경우에만 DOM 노드를 변경한다.** 🔥
 
 ### 4. 브라우저 렌더링(페인트)
-React가 DOM을 업에이트한 후 브라우저는 화면을 다시 그린다.
+React가 DOM을 업데이트한 후 브라우저는 화면을 다시 그린다.
 
 ## [스냅샷으로서의 State](https://ko.react.dev/learn/state-as-a-snapshot)
-- State 변수는 JavaScript 변수처럼 보이지만, 스냅샷처럼 동작한다.
-- "렌더링"은 컴포넌트를 호출하고 JSX를 반환. 즉 Prop, 이벤트 핸들러, 로컬 변수는 모두 렌더링 당시의 state를 사용해 계산 된다는 것.
+- State 변수는 일반적인 JavaScript 변수처럼 보이지만, 스냅샷처럼 동작한다. **state 변수를 set하면 이미 가지고 있는 state 변수가 변경되는 것이 아니라 React에게 새 렌더링을 요청**한다.
+- "렌더링"은 컴포넌트 함수를 호출하는 것이다. 함수가 반환하는 JSX는 렌더링 당시의 스냅샷과 같다. prop, 이벤트 핸들러, 로컬 변수 모두 렌더링 당시의 state를 사용해 계산된다.
 
 ```tsx
 import { useState } from 'react';
@@ -476,28 +475,38 @@ export default function Counter() {
   )
 }
 ```
-- 여기서 **state를 설정하면 다음 렌더링에 대해서만 변경된다**.
+- 여기서 **state를 set하면 다음 렌더링의 state 대해서만 변경된다**.
 - 어떤 이벤트 핸들러가 비동기적이더라도 변경되더라도 **렌더링 내에서 절대 변경되지 않는다.**
 
 ## [state 업데이트 큐](https://ko.react.dev/learn/queueing-a-series-of-state-updates) 🔥
 
-batching”이란 무엇이며 React가 여러 state 업데이트를 처리하는 방법
-동일한 state 변수에서 여러 업데이트를 연속으로 적용하는 방법
-
-### React state batches 업데이트 
-```tsx
+```jsx
 const [number, setNumber] = useState(0);
 
-return <button onClick={() => {
-    setNumber(number + 1);
-    setNumber(number + 1);
-    setNumber(number + 1);
-}}>+3</button>
+function handleClick() {
+  setNumber(number + 1);
+  setNumber(number + 1);
+  setNumber(number + 1);
+}
 ```
-각 렌더링의 state는 고정되어 있으므로 setNumber 호출 횟수와 상관없이 항상 number는 0이다.
+위 코드에서 `handleClick`이 호출되면 첫 렌더링의 `number` 값이 항상 0인 이유는
+1. 스냅샷으로서 [각 렌더링의 state 값은 고정](#스냅샷으로서의-state)되어있다.
+2. 또, **React는 state 업데이트를 하기 전에 이벤트 핸들러의 모든 코드가 실행될 때까지 기다린다.**
+
+이로 인해 여러 `set` 호출이 완료된 후에 리렌더링이 발생한다. 이를 **batching**이라고 한다.
+batching은 불필요한 리렌더링을 줄여 성능을 향상시키고, UI가 중간 상태로 변경되는 것을 방지한다.
+
+### 다음 렌더링 전에 동일한 state 변수를 여러 번 업데이트하기
+
+다음 렌더링 전에 동일한 state 변수를 여러 번 업데이트 하고 싶다면 `업데이터 함수`를 사용한다.
+```jsx
+setNumber(n => n + 1);
+setNumber(n => n + 1);
+setNumber(n => n + 1);
+```
 
 # Hook 🔥
-q- Hook은 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수다. 🔥
+- Hook은 React 기능에 "연결할 수(hook into)" 있게 해주는 특별한 함수다. 🔥
 - Hook은 렌더링 중에만 사용할 수 있다.
 
 
