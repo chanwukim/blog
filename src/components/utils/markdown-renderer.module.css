@@ -10,8 +10,8 @@
   }
 
   & a {
-    color: #1d4ed8;
-    border-bottom: 1px solid #1d4ed8;
+    color: #0284c7;
+    border-bottom: 1px solid #0284c7;
   }
 
   & a:not([href]) {
