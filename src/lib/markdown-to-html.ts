@@ -17,6 +17,7 @@ import "prismjs/components/prism-css.min";
 import "prismjs/components/prism-sql.min";
 import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
+import "prismjs/components/prism-gradle";
 
 export default async function markdownToHtml(markdown: string) {
   const result = await unified() // 플러그인 기반의 문서 처리
