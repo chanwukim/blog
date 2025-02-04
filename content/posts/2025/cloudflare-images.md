@@ -1,8 +1,8 @@
 ---
 title: "Cloudflare Images 초기 설정 메모"
-category: "Cloudflare"
 tags:
   - Cloudflare
+  - 메모
 publishedAt: "2025-01-26"
 isPublished: true
 ---
