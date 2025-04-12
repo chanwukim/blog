@@ -9,3 +9,5 @@ storybook-static
 playwright-report
 docs
 posts
+pnpm-lock.yaml
+package-lock.yaml
