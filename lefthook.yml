@@ -1,0 +1,10 @@
+pre-commit:
+  jobs:
+    - name: format
+      glob: "*.{ts,tsx}"
+      run: pnpm format
+      skip: [".next/*", "node_modules/*"]
+    - name: lint
+      glob: "*.{ts,tsx}"
+      run: pnpm lint
+      skip: [".next/*", "node_modules/*"]
