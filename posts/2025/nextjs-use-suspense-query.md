@@ -1,6 +1,7 @@
 ---
 title: "Next.js에서 useSuspenseQuery 중복 요청"
 description: "클라이언트 컴포넌트에서만 API 호출 일어나게 하기"
+category: "Next.js"
 tags:
   - Next.js
 publishedAt: "2025-04-01"

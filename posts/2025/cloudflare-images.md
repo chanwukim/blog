@@ -1,6 +1,7 @@
 ---
 title: "Cloudflare Images 초기 설정 메모"
 description: "Cloudflare Images 서비스 설정해보기"
+category: "DevOps"
 tags:
   - Cloudflare
   - 메모
