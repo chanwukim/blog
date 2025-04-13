@@ -19,6 +19,7 @@ export function Heading<C extends React.ElementType = "h1">({
 
   return (
     <Component
+      data-component="heading"
       className={cn("text-foreground-header break-words break-keep", className)}
       {...rest}
     />
