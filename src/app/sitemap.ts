@@ -1,18 +1,30 @@
-import { SITE_CONFIG } from "@/lib/constants";
-import { getAllPosts } from "@/lib/post";
+import { SITE_CONFIG } from "@/libs/constants";
+import { getAllPosts, getAllSeries, getAllTags } from "@/libs/posts";
 
 export default async function sitemap() {
   const posts = await getAllPosts();
+  const series = await getAllSeries();
+  const tags = await getAllTags();
 
-  const blogs = posts.map((post) => ({
-    url: `${SITE_CONFIG.url}/post/${post.slug}`,
-    lastModified: post.publishedAt,
+  const routes = ["", "/posts"].map((route) => ({
+    url: `${SITE_CONFIG.URL}${route}`,
+    lastModified: new Date(),
   }));
 
-  const routes = ["", "/post"].map((route) => ({
-    url: `${SITE_CONFIG.url}${route}`,
-    lastModified: new Date().toISOString().split("T")[0],
+  const postUrls = posts.map((post) => ({
+    url: `${SITE_CONFIG.URL}/posts/${post.slug}`,
+    lastModified: new Date(post.metadata.publishedAt),
   }));
 
-  return [...routes, ...blogs];
+  const seriesUrls = series.map((seriesItem) => ({
+    url: `${SITE_CONFIG.URL}/series/${encodeURIComponent(seriesItem)}`,
+    lastModified: new Date(),
+  }));
+
+  const tagUrls = tags.map((tag) => ({
+    url: `${SITE_CONFIG.URL}/tags/${encodeURIComponent(tag)}`,
+    lastModified: new Date(),
+  }));
+
+  return [...routes, ...postUrls, ...seriesUrls, ...tagUrls];
 }

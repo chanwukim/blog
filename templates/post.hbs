@@ -1,0 +1,20 @@
+---
+title: "{{title}}"
+description: "{{description}}"
+series: "{{#if series}}{{series}}{{/if}}"
+tags:
+{{#each (splitTags tags)}}
+  - {{this}}
+{{/each}}
+publishedAt: "{{currentDate}}"
+updatedAt: "{{currentDate}}"
+isPublished: {{isPublished}}
+---
+
+# {{title}}
+
+{{#if series}}
+> **{{series}}** 시리즈의 글입니다.
+{{/if}}
+
+

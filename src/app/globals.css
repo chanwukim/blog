@@ -1,0 +1,609 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * https://tailwindcss.com/docs/functions-and-directives#custom-variant-directive
+ */
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.65rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.2 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  --code-bg: #1e1e1e;
+  --code-text: #d4d4d4;
+  --code-comment: #6a9955;
+  --code-keyword: #569cd6;
+  --code-string: #ce9178;
+  --code-number: #b5cea8;
+  --code-function: #dcdcaa;
+  --code-property: #92c5f8;
+  --code-operator: #d4d4d4;
+  --code-regex: #d16969;
+  --code-line-number: #858585;
+  --code-border: #3e3e42;
+  --code-header-bg: #2d2d30;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 버튼 커서 변경 */
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+
+  /* 스크롤바 스타일 */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+:root {
+  --code-bg: #1e1e1e;
+  --code-text: #d4d4d4;
+  --code-comment: #6a9955;
+  --code-keyword: #c586c0;
+  --code-string: #ce9178;
+  --code-number: #b5cea8;
+  --code-function: #dcdcaa;
+  --code-property: #9cdcfe;
+  --code-operator: #d4d4d4;
+  --code-regex: #d16969;
+  --code-line-number: #858585;
+  --code-border: #3e3e42;
+  --code-header-bg: #2d2d30;
+  --code-type: #4ec9b0;
+  --code-component: #4ec9b0;
+}
+
+.article {
+  color: var(--foreground);
+  max-width: none;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.article h1 {
+  scroll-margin-top: 5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  padding-bottom: 0.3em;
+}
+
+.article h2 {
+  scroll-margin-top: 5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  padding-bottom: 0.3em;
+}
+
+.article h2:first-child {
+  margin-top: 0;
+}
+
+.article h3 {
+  scroll-margin-top: 5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.article h4 {
+  scroll-margin-top: 5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.article h5 {
+  scroll-margin-top: 5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.article h6 {
+  scroll-margin-top: 5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  color: var(--muted-foreground);
+}
+
+.article p {
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.article blockquote {
+  margin: 0 0 16px 0;
+  padding: 0 1em;
+  color: var(--muted-foreground);
+  border-left: 0.25em solid var(--border);
+  background-color: transparent;
+  font-style: normal;
+}
+
+.article blockquote > :first-child {
+  margin-top: 0;
+}
+
+.article blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.article ul,
+.article ol {
+  margin-bottom: 16px;
+  margin-top: 0;
+  padding-left: 2em;
+}
+
+.article ul {
+  list-style-type: disc;
+}
+
+.article ol {
+  list-style-type: decimal;
+}
+
+.article ul ul,
+.article ul ol,
+.article ol ol,
+.article ol ul {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.article li {
+  word-wrap: break-all;
+}
+
+.article li > p {
+  margin-top: 16px;
+}
+
+.article li + li {
+  margin-top: 0.25em;
+}
+
+.article table {
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.article table th {
+  font-weight: 600;
+  padding: 6px 13px;
+  border: 1px solid var(--border);
+  background-color: var(--muted);
+}
+
+.article table td {
+  padding: 6px 13px;
+  border: 1px solid var(--border);
+}
+
+.article table tr {
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.article table tr:nth-child(2n) {
+  background-color: var(--muted);
+}
+
+.article a {
+  color: #0969da;
+  text-decoration: none;
+}
+
+.article a:hover {
+  text-decoration: underline;
+}
+
+.dark .article a {
+  color: #58a6ff;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+  background-color: var(--background);
+  border-style: none;
+  box-sizing: content-box;
+  margin: 16px 0;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.article hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--border);
+  border: 0;
+}
+
+.article strong {
+  font-weight: 600;
+}
+
+.article em {
+  font-style: italic;
+}
+
+/* 인라인 코드 */
+.article :not(pre) > code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(175, 184, 193, 0.2);
+  border-radius: 6px;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
+    monospace;
+  border: none;
+}
+
+.dark .article :not(pre) > code {
+  background-color: rgba(110, 118, 129, 0.4);
+}
+
+/* 코드 블록 */
+.article pre {
+  position: relative;
+  padding: 16px;
+  overflow: auto;
+  font-size: 14px;
+  line-height: 1.45;
+  background-color: var(--code-bg);
+  border-radius: 6px;
+  margin-bottom: 16px;
+  margin-top: 0;
+  border: 1px solid var(--code-border);
+}
+
+.article pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  font-family:
+    "Cascadia Code", "Fira Code", "JetBrains Mono", "SF Mono", Monaco,
+    "Inconsolata", "Roboto Mono", "Source Code Pro", monospace;
+  font-size: 80%;
+  color: var(--code-text);
+}
+
+.article .token.comment,
+.article .token.prolog,
+.article .token.doctype,
+.article .token.cdata {
+  color: var(--code-comment); /* #6a9955 초록 */
+  font-style: italic;
+}
+
+.article .token.punctuation {
+  color: var(--code-text); /* #d4d4d4 흰색 */
+}
+
+.article .token.property,
+.article .token.tag,
+.article .token.constant,
+.article .token.symbol,
+.article .token.deleted {
+  color: var(--code-property); /* #9cdcfe 하늘색 */
+}
+
+.article .token.boolean,
+.article .token.number {
+  color: var(--code-number); /* #b5cea8 연두색 */
+}
+
+.article .token.selector,
+.article .token.attr-name,
+.article .token.string,
+.article .token.char,
+.article .token.builtin,
+.article .token.inserted {
+  color: var(--code-string); /* #ce9178 주황색 */
+}
+
+.article .token.operator,
+.article .token.entity,
+.article .token.url,
+.article .language-css .token.string,
+.article .style .token.string {
+  color: var(--code-text); /* #d4d4d4 흰색 */
+}
+
+.article .token.atrule,
+.article .token.attr-value,
+.article .token.function,
+.article .token.method {
+  color: var(--code-function); /* #dcdcaa 노란색 */
+}
+
+.article .token.keyword,
+.article .token.control-flow,
+.article .token.directive,
+.article .token.unit,
+.article .token.statement,
+.article .token.at-rule,
+.article .token.placeholder,
+.article .token.variable {
+  color: var(--code-keyword); /* #c586c0 보라색 */
+}
+
+.article .token.regex,
+.article .token.important {
+  color: var(--code-regex); /* #d16969 빨간색 */
+}
+
+/* TypeScript/TSX 특화 토큰 */
+.article .token.class-name,
+.article .token.type-annotation,
+.article .token.type,
+.article .token.interface,
+.article .token.generic,
+.article .token.builtin-type {
+  color: var(--code-type); /* #4ec9b0 청록색 */
+}
+
+.article .token.parameter,
+.article .token.variable {
+  color: var(--code-property); /* #9cdcfe 하늘색 */
+}
+
+.article .token.decorator {
+  color: var(--code-function); /* #dcdcaa 노란색 */
+}
+
+.article .token.namespace {
+  color: var(--code-property); /* #9cdcfe 하늘색 */
+}
+
+/* JSX/TSX 특화 토큰 */
+.article .token.tag .token.tag,
+.article .token.tag .token.class-name {
+  color: var(--code-component); /* #4ec9b0 청록색 - 컴포넌트 */
+}
+
+.article .token.tag .token.punctuation {
+  color: var(--code-text); /* #d4d4d4 흰색 */
+}
+
+.article .token.attr-name {
+  color: var(--code-property); /* #9cdcfe 하늘색 */
+}
+
+.article .token.attr-value .token.punctuation {
+  color: var(--code-string); /* #ce9178 주황색 */
+}
+
+.article .token.script .token.punctuation {
+  color: var(--code-text); /* #d4d4d4 흰색 */
+}
+
+/* 추가 VS Code 스타일 토큰 */
+.article .token.imports,
+.article .token.maybe-class-name {
+  color: var(--code-type); /* #4ec9b0 청록색 */
+}
+
+.article .token.console {
+  color: var(--code-property); /* #9cdcfe 하늘색 */
+}
+
+.article .token.template-string {
+  color: var(--code-string); /* #ce9178 주황색 */
+}
+
+.article .token.template-punctuation {
+  color: var(--code-keyword); /* #c586c0 보라색 */
+}
+
+/* 특정 키워드들을 보라색으로 */
+.article .token.keyword.return,
+.article .token.keyword.export,
+.article .token.keyword.import,
+.article .token.keyword.from,
+.article .token.keyword.const,
+.article .token.keyword.let,
+.article .token.keyword.var,
+.article .token.keyword.function,
+.article .token.keyword.async,
+.article .token.keyword.await {
+  color: var(--code-keyword); /* #c586c0 보라색 */
+}
+
+.article .token.bold {
+  font-weight: bold;
+}
+
+.article .token.italic {
+  font-style: italic;
+}
+
+.article .token.entity {
+  cursor: help;
+}
+
+/* 라인 넘버 스타일 */
+.article .line-numbers .line-numbers-rows {
+  border-right: 1px solid var(--code-border);
+  margin-right: 1rem;
+  padding-right: 0.5rem;
+}
+
+.article .line-numbers-rows > span:before {
+  color: var(--code-line-number);
+}

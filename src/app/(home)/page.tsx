@@ -1,37 +1,34 @@
-import { getAllCategories, getAllPosts, getAllTags } from "@/lib/post";
-
-import BlogTavNav from "@/components/blog/blog-tab-nav";
-import CategoriesNav from "@/components/blog/categories-nav";
-import Posts from "@/components/blog/posts";
-import Profile from "@/components/blog/profile";
-import TagsSection from "@/components/blog/tags-section";
 import {
-  AppHeader,
-  AppPageLayout,
-  AppPageLayoutContent,
-  AppPageLayoutSidebar,
-} from "@/components/layout/app-layout";
+  BlogContent,
+  BlogContentAside,
+  BlogContentMain,
+  BlogFooter,
+  BlogHeader,
+} from "@/components/blog-layout";
+import { MobileTagsBar } from "@/components/mobile-tags-bar";
+import { NavTab } from "@/components/nav-tab";
+import { PostsSection } from "@/components/posts-section";
+import { TagsSection } from "@/components/tags-section";
+import { getAllPosts, getAllTags } from "@/libs/posts";
 
 export default async function HomePage() {
   const posts = await getAllPosts();
-  const categories = await getAllCategories();
   const tags = await getAllTags();
 
   return (
     <>
-      <AppHeader />
-      <AppPageLayout>
-        <AppPageLayoutContent>
-          <Profile />
-          <BlogTavNav />
-          <TagsSection tags={tags} className="only-mobile" />
-          <Posts posts={posts} />
-        </AppPageLayoutContent>
-        <AppPageLayoutSidebar>
-          <CategoriesNav categories={categories} className="not-mobile" />
-          <TagsSection tags={tags} className="not-mobile" />
-        </AppPageLayoutSidebar>
-      </AppPageLayout>
+      <BlogHeader />
+      <BlogContent>
+        <BlogContentMain>
+          <NavTab currentTab="all" />
+          <MobileTagsBar tags={tags} />
+          <PostsSection posts={posts} />
+        </BlogContentMain>
+        <BlogContentAside>
+          <TagsSection tags={tags} />
+        </BlogContentAside>
+      </BlogContent>
+      <BlogFooter />
     </>
   );
 }

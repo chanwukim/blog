@@ -1,3 +1,5 @@
+import { SITE_CONFIG } from "@/libs/constants";
+
 export default function robots() {
   return {
     rules: [
@@ -5,7 +7,7 @@ export default function robots() {
         userAgent: "*",
       },
     ],
-    sitemap: "https://chanwu.dev/sitemap.xml",
-    host: "https://chanwu.dev",
+    sitemap: `${SITE_CONFIG.URL}/sitemap.xml`,
+    host: SITE_CONFIG.URL,
   };
 }
