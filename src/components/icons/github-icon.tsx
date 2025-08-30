@@ -1,4 +1,4 @@
-import type { IconProps } from "@/lib/types";
+import type { IconProps } from "@/libs/types";
 
 export default function GithubIcon({ size = 24, ...rest }: IconProps) {
   return (
