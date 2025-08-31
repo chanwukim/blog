@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { cn } from "@/libs/cn";
 import { getReadingTime } from "@/libs/get-reading-time";
 import { type Post } from "@/libs/posts";
 import { Badge } from "./ui/badge";
@@ -53,14 +54,19 @@ function PostsItem({ post }: PostsItemProps) {
         </Link>
       </div>
 
-      <div className="text-muted-foreground mt-5 flex items-center gap-2 text-xs">
+      <div
+        className={cn(
+          "text-muted-foreground flex items-center gap-2 text-xs",
+          metadata.description ? "mt-4" : "mt-2",
+        )}
+      >
         <time dateTime={metadata.publishedAt}>{metadata.publishedAt}</time>
         <span>·</span>
         <span>{readingTime}</span>
       </div>
 
       {metadata.tags.length > 0 && (
-        <div className="mt-2">
+        <div className="mt-1">
           <span className="sr-only">{metadata.title}의 태그</span>
           <PostTags tags={metadata.tags} />
         </div>
