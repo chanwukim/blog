@@ -6,7 +6,7 @@ tags:
   - Cloudflare
   - 메모
 publishedAt: "2025-01-26"
-updatedAt: "2025-01-26"
+updatedAt: "2025-12-02"
 isPublished: true
 ---
 
@@ -126,24 +126,23 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/images/v2/direct_uplo
 **설정 방법**
 
 1.  DNS 설정 `대시보드` - `1. 웹 사이트` - `2. 도메인 추가`후, 추가된 도메인에 클릭한다. 도메인 추가 과정은 생략한다.
-    ![domain](/2025/cloudflare-images/08.png) `3. DNS - 레코드` 탭 접근후 `레코드 추가` 버튼을 누른다.
+    ![domain](/2025/cloudflare-images/08.png)
+2.  `DNS - 레코드` 탭 접근후 `레코드 추가` 버튼을 누른다.
     ![domain](/2025/cloudflare-images/09.png)
+3.  유형은 `CNAME`, 이름은 `cdn`, 대상은 도메인으로 입력한다. 즉, `mydomain.com`이라면 대상에 `mydomain.com`을 그대로 입력한다.
+    ![domain](/2025/cloudflare-images/10.png)
 
-            4. 유형은 `CNAME`, 이름은 `cdn`, 대상은 도메인으로 입력한다. 즉, `mydomain.com`이라면 대상에  `mydomain.com`을 그대로 입력한다.
-
-        ![domain](/2025/cloudflare-images/10.png)
-
-2.  URL 재작성 규칙 설정 1. 도메인 대시보드에서 `규칙` - `개요` 탭 접근 후 `URL 다시 쓰기 규칙` 옆의 `규칙 생성` 버튼을 누른다.
+4.  URL 재작성 규칙 설정 1. 도메인 대시보드에서 `규칙` - `개요` 탭 접근 후 `URL 다시 쓰기 규칙` 옆의 `규칙 생성` 버튼을 누른다.
     ![rule](/2025/cloudflare-images/11.png)
 
-        2. 규칙 이름은 적당히 입력하고
-            - 와일드카드 패턴 `*` 선택
-            - 요청 URL `https://cdn.mydomain.com/images/*`
-            - 대상 경로 `images/*`
-            - 다시 쓰기 대상 `https://imagedelivery.net/계정-해시/${1}`
-            - 위 정보를 입력하고 `배포` 버튼을 누른다.
+5.  규칙 이름은 적당히 입력하고
 
-    ![rule](/2025/cloudflare-images/12.png)
+- 와일드카드 패턴 `*` 선택
+- 요청 URL `https://cdn.mydomain.com/images/*`
+- 대상 경로 `images/*`
+- 다시 쓰기 대상 `https://imagedelivery.net/계정-해시/${1}`
+- 위 정보를 입력하고 `배포` 버튼을 누른다.
+  ![rule](/2025/cloudflare-images/12.png)
 
 ## 최종 사용
 
