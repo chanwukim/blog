@@ -5,4 +5,7 @@ node_modules/
 target/
 coverage/
 pnpm-lock.yaml
+package-lock.json
+yarn.lock
 templates/
+.husky/

@@ -6,7 +6,7 @@ import GithubIcon from "./icons/github-icon";
 export function BlogHeader() {
   return (
     <header className="bg-background/80 sticky top-0 z-10 flex backdrop-blur-sm">
-      <div className="mx-auto flex h-16 w-full max-w-screen-lg items-center px-4">
+      <div className="mx-auto flex h-16 w-full max-w-5xl items-center px-4">
         <Link href="/" className="flex items-center p-2 text-sm font-medium">
           {SITE_CONFIG.TITLE}
         </Link>
@@ -17,7 +17,7 @@ export function BlogHeader() {
 
 export function BlogContent({ children }: React.PropsWithChildren) {
   return (
-    <div className="mx-auto flex w-full max-w-screen-lg flex-1 justify-evenly py-10">
+    <div className="mx-auto flex w-full max-w-5xl flex-1 justify-evenly py-10">
       {children}
     </div>
   );

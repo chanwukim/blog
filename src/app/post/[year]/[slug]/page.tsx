@@ -18,6 +18,7 @@ import {
   getPostsBySeries,
   type Post,
 } from "@/libs/posts";
+import { extractTocFromMarkdown } from "@/libs/toc";
 
 interface PostPageProps {
   params: Promise<{
@@ -36,7 +37,9 @@ export async function generateMetadata({ params }: PostPageProps) {
     };
   }
 
-  const ogImageUrl = `${SITE_CONFIG.URL}/api/og?title=${encodeURIComponent(post.metadata.title)}&description=${encodeURIComponent(post.metadata.description)}&type=post`;
+  const ogImageUrl = `${SITE_CONFIG.URL}/api/og?title=${encodeURIComponent(
+    post.metadata.title
+  )}&description=${encodeURIComponent(post.metadata.description)}&type=post`;
 
   return {
     title: post.metadata.title,
@@ -97,11 +100,11 @@ async function getSeriesNavigation(currentPost: Post): Promise<{
   const sortedPosts = seriesPosts.sort(
     (a, b) =>
       new Date(a.metadata.publishedAt).getTime() -
-      new Date(b.metadata.publishedAt).getTime(),
+      new Date(b.metadata.publishedAt).getTime()
   );
 
   const currentIndex = sortedPosts.findIndex(
-    (post) => post.slug === currentPost.slug,
+    (post) => post.slug === currentPost.slug
   );
 
   if (currentIndex === -1) {
@@ -129,6 +132,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   const html = await markdownToHtml(post.content);
+  const tocItems = extractTocFromMarkdown(post.content);
   const seriesNavigation = await getSeriesNavigation(post);
 
   return (
@@ -145,8 +149,7 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
           <article
             className="article break-keep md:px-0"
-            dangerouslySetInnerHTML={{ __html: html }}
-          ></article>
+            dangerouslySetInnerHTML={{ __html: html }}></article>
           {seriesNavigation && (
             <SeriesNavigation
               prevPost={seriesNavigation.prevPost}
@@ -155,7 +158,7 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
         </BlogContentMain>
         <BlogContentAside>
-          <PostToc />
+          <PostToc items={tocItems} />
         </BlogContentAside>
       </BlogContent>
       <BlogFooter />

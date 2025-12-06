@@ -1,7 +1,7 @@
 /**
  * @param {import('plop').NodePlopAPI} plop
  */
-export default function (plop) {
+function postGenerator(plop) {
   plop.setHelper("currentYear", () => new Date().getFullYear());
   plop.setHelper("currentDate", () => {
     const now = new Date();
@@ -103,3 +103,5 @@ export default function (plop) {
     ],
   });
 }
+
+export default postGenerator;
