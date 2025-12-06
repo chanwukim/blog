@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PostPageProps) {
   }
 
   const ogImageUrl = `${SITE_CONFIG.URL}/api/og?title=${encodeURIComponent(
-    post.metadata.title
+    post.metadata.title,
   )}&description=${encodeURIComponent(post.metadata.description)}&type=post`;
 
   return {
@@ -100,11 +100,11 @@ async function getSeriesNavigation(currentPost: Post): Promise<{
   const sortedPosts = seriesPosts.sort(
     (a, b) =>
       new Date(a.metadata.publishedAt).getTime() -
-      new Date(b.metadata.publishedAt).getTime()
+      new Date(b.metadata.publishedAt).getTime(),
   );
 
   const currentIndex = sortedPosts.findIndex(
-    (post) => post.slug === currentPost.slug
+    (post) => post.slug === currentPost.slug,
   );
 
   if (currentIndex === -1) {
@@ -149,7 +149,8 @@ export default async function PostPage({ params }: PostPageProps) {
           )}
           <article
             className="article break-keep md:px-0"
-            dangerouslySetInnerHTML={{ __html: html }}></article>
+            dangerouslySetInnerHTML={{ __html: html }}
+          ></article>
           {seriesNavigation && (
             <SeriesNavigation
               prevPost={seriesNavigation.prevPost}

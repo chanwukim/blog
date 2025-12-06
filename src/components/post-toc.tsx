@@ -26,7 +26,7 @@ export function PostToc({ items }: PostTocProps) {
         }
       });
     },
-    [items]
+    [items],
   );
 
   useEffect(function handleCurrentHeading() {
@@ -61,8 +61,9 @@ export function PostToc({ items }: PostTocProps) {
                 item.level === 3 && "pl-2",
                 activeId === item.id
                   ? "text-primary font-medium"
-                  : "text-muted-foreground"
-              )}>
+                  : "text-muted-foreground",
+              )}
+            >
               {item.text}
             </a>
           </li>

@@ -43,7 +43,8 @@ const tabsTriggerVariants = cva(
 );
 
 interface TabsProps
-  extends React.ComponentProps<typeof TabsPrimitive.Root>,
+  extends
+    React.ComponentProps<typeof TabsPrimitive.Root>,
     VariantProps<typeof tabsListVariants> {}
 
 function Tabs({ className, variant = "default", ...props }: TabsProps) {
@@ -73,7 +74,8 @@ function TabsList({
 }
 
 interface TabsTriggerProps
-  extends React.ComponentProps<typeof TabsPrimitive.Trigger>,
+  extends
+    React.ComponentProps<typeof TabsPrimitive.Trigger>,
     VariantProps<typeof tabsTriggerVariants> {}
 
 function TabsTrigger({ className, ...props }: TabsTriggerProps) {

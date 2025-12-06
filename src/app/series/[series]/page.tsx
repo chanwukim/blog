@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   const description = `${currentSeries} 시리즈의 포스트들 (${posts.length}개)`;
   const ogImageUrl = `${SITE_CONFIG.URL}/api/og?title=${encodeURIComponent(
-    currentSeries
+    currentSeries,
   )}&description=${encodeURIComponent(description)}&type=series`;
 
   return {

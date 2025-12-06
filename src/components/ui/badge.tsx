@@ -56,12 +56,11 @@ const badgeVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 interface BadgeProps
-  extends React.ComponentProps<"div">,
-    VariantProps<typeof badgeVariants> {
+  extends React.ComponentProps<"div">, VariantProps<typeof badgeVariants> {
   asChild?: boolean;
 }
 
