@@ -11,6 +11,8 @@ updatedAt: "2026-03-09"
 isPublished: true
 ---
 
+# 테일윈드 인텔리센스 안 될 때
+
 Tailwind 4는 tailwind.config.js 없이 CSS 파일만 쓰기 때문에, VS Code 확장이 설정을 못 찾을 수 있다. 특히 모노레포면 더.
 
 `.vscode/settings.json`에 아래 내용을 넣는다.
